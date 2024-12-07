@@ -1,0 +1,14 @@
+---
+- name: Demo on Callback Plugins
+  hosts: ciscoIOS
+  gather_facts: true
+  tasks:
+    - name: Send cisco commands
+      cisco.ios.ios_command:
+        commands:
+          - "sh ip int brief"
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

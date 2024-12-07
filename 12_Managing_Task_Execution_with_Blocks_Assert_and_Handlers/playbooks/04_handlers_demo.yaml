@@ -1,0 +1,27 @@
+---
+- name: Demo on Handlers
+  hosts: VIOS1
+  gather_facts: false
+  tasks:
+    - name: Configure VLANS
+      cisco.ios.ios_vlans:
+        config:
+          - name: VLAN0253
+            vlan_id: 253
+            state: active
+            shutdown: disabled
+      notify:
+        - Allow vlan on trunk port
+        - Save the configuration
+
+  handlers:
+    - name: Allow vlan on trunk port
+      cisco.ios.ios_config:
+        lines:
+          - switchport trunk allowed vlan add 253
+        parents:
+          - interface GigabitEthernet1/1
+
+    - name: Save the configuration
+      cisco.ios.ios_config:
+        save_when: always

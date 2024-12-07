@@ -1,0 +1,27 @@
+---
+- name: Demo on Filters
+  hosts: ciscoIOS
+  gather_facts: false
+  vars:
+    local_usernames:
+      - admin
+      - operator
+    local_usernames_dict:
+      admin: devnet
+      operator: devnet
+    local_usernames_list:
+      - usr: admin
+        pwd: admin123
+      - usr: operator
+        pwd: operator123
+  tasks:
+    - name: Filters Demo
+      ansible.builtin.debug:
+        msg: 
+          - "{{ inventory_hostname | lower }}"
+          - "{{ device_role | default('network_device')}}"
+          - "{{ device_role | default(omit) }}"
+          - "{{ local_usernames | type_debug }}"
+          - "{{ local_usernames_dict | type_debug }}"
+          - "{{ local_usernames_dict | dict2items }}"
+          - "{{ local_usernames_list | items2dict(key_name='usr', value_name='pwd') }}"

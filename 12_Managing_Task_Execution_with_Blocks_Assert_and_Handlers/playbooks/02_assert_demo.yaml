@@ -1,0 +1,25 @@
+---
+- name: Demo on Assert module
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Gather all legacy facts
+      cisco.ios.ios_facts:
+        gather_subset:
+          - hardware
+
+    - name: Print facts
+      ansible.builtin.debug:
+        msg: "{{ ansible_facts }}"
+
+    - name: Fetch available memory
+      ansible.builtin.set_fact:
+        avl_mem: "{{ ansible_facts['net_filesystems_info']['bootflash:']['spacefree_kb'] }}"
+
+    - name: Check if memory available for new ios image
+      ansible.builtin.assert:
+        that:
+          - "{{ (avl_mem | int) > 6000000 }}"
+        fail_msg: "Space not available for new image, remove old files"
+        success_msg: "Space available for new image, Continue with IOS copy"
+        

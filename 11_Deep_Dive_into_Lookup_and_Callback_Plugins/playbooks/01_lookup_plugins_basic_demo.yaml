@@ -1,0 +1,35 @@
+---
+- name: Demo on Plugins Basics
+  hosts: CSR1
+  gather_facts: false
+  vars:
+    file_contents: "{{ lookup('file', '/home/nw_automation/ansible_course/11_Deep_Dive_into_Lookup_and_Callback_Plugins/playbooks/config_files/CSR1_config.cfg', wantlist=true) }}"
+    username_details:
+      developement:
+        username: dev_user
+        password: dev_1234
+      production:
+        username: prod_user
+        password: prod_1234
+  tasks:
+    - name: Display variable
+      ansible.builtin.debug:
+        var: file_contents
+    
+    - name: Demo on Dig Plugin
+      ansible.builtin.debug:
+        msg:
+          - "{{ lookup('dig', 'networks2gether.com') }}"
+          - "{{ lookup('dig', 'networks2gether.com', wantlist=true) }}"
+
+    - name: Use Lookup plugin in loop
+      ansible.builtin.debug:
+        msg: "IP Address {{ index + 1 }} is: {{ item }}"
+      loop: "{{ lookup('dig', 'networks2gether.com', wantlist=true) }}"
+      loop_control:
+        index_var: index
+
+    - name: Use dict loop plugin
+      ansible.builtin.debug:
+        msg: "username {{ item.value.username }} privilege 15 secret {{ item.value.password }}"
+      loop: "{{ lookup('dict', username_details) }}"

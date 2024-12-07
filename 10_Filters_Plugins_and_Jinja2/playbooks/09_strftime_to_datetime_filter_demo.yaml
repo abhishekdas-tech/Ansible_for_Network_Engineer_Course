@@ -1,0 +1,18 @@
+---
+- name: Demo on datetime
+  hosts: localhost
+  tasks:
+    - name: Display current date and time
+      ansible.builtin.debug:
+        msg: 
+         - "{{ ansible_date_time }}"
+         - "{{ '%d-%m-%Y' | strftime }}"
+         - "{{ '%d-%m-%Y %H:%M:%S' | strftime }}"
+         - "{{ '%d-%m-%Y %H:%M:%S' | strftime(ansible_date_time.epoch) }}"
+         - "{{ '%d-%m-%Y %H:%M:%S' | strftime(utc=true) }}"
+         - "{{ now(fmt='%Y-%m-%d %H:%M:%S') }}"
+         - "{{ ('2024-11-02 10:10:10' | to_datetime) - ('2024-10-02 10:10:10' | to_datetime)}}"
+         - "{{ (('2025-11-02 10:10:10' | to_datetime) - ('2024-10-02 10:10:10' | to_datetime)).days }}"
+         - "{{ (('2024-11-02 10:30:10' | to_datetime) - ('2024-11-02 10:10:10' | to_datetime)).seconds }}"
+         - "{{ (('2024-11-02 10:10:10' | to_datetime) - ('2024-10-02 10:10:10' | to_datetime)).total_seconds() }}"
+         - "{{ lookup('pipe', 'date +%d-%m-%Y-%H:%M:%S') }}"

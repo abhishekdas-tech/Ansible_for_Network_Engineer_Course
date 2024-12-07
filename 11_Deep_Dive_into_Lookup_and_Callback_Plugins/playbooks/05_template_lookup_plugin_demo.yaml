@@ -1,0 +1,12 @@
+---
+- name: Demo on Lookup Plugin - Template
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Generate configuration from template
+      ansible.builtin.debug:
+        msg: "{{ lookup('template', 'acl_config.j2', template_vars={'acl_name': 'NETWORK_MGMT_ACL'}) }}"
+
+    - name: Apply the configuration
+      cisco.ios.ios_config:
+        lines: "{{ lookup('template', 'acl_config.j2', template_vars={'acl_name': 'NETWORK_MGMT_ACL'}) }}"

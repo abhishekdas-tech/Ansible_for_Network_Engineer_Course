@@ -1,0 +1,9 @@
+---
+- name: Demo on Jinja2 template - Include
+  hosts: VIOS1
+  gather_facts: false
+  tasks:
+    - name: Generate full configuration
+      ansible.builtin.template:
+        src:  full_config.j2
+        dest: "{{ playbook_dir }}/config_files/{{ inventory_hostname }}_full_config.cfg"

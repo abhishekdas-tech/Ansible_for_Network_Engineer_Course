@@ -1,0 +1,22 @@
+- name: Demo on Assert module
+  hosts: VIOS1
+  gather_facts: false
+  vars_prompt:
+    - name: new_vlan
+      prompt: "Please enter the VLAN ID "
+      private: false
+  tasks:
+    - name: Assert VLAN IDs are within valid range
+      ansible.builtin.assert:
+        that:
+          - "{{ (new_vlan | int) > 0 and (new_vlan | int) <=4094 }}"
+        fail_msg: "VLAN ID should be greater than 0 and less than 4094"
+        success_msg: "Valid VLAN ID, Configuring the VLAN on the device"
+    
+    - name: Configure VLANs
+      cisco.ios.ios_vlans:
+        config:
+          - name: NEW_VLAN
+            vlan_id: "{{ new_vlan }}"
+            state: active
+            shutdown: disabled

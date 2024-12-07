@@ -1,0 +1,8 @@
+! Including basic config template
+{% include 'device_basic_config.j2' %}
+! Include switchport config template
+{% include 'switchport_config.j2' %}
+!
+spanning-tree mode rapid-pvst
+spanning-tree vlan 1-4094 priority 4096
+!

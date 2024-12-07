@@ -1,0 +1,60 @@
+---
+- name: Block in Ansible
+  hosts: ciscoIOS
+  gather_facts: false
+  vars:
+    execute_tasks: true
+  tasks:
+    - name: Demo on Block
+      block:
+        - name: Demo on Block
+          ansible.builtin.debug:
+            msg: 'Running first task in Block'
+        
+        - name: Sending show command
+          cisco.ios.ios_command:
+            commands:
+              - show ip int br
+
+        - name: This task will be skipped
+          ansible.builtin.debug:
+            msg: 'This task is running so the above task is not failed'
+      when: execute_tasks
+
+      rescue:
+        - name: Print when errors
+          ansible.builtin.ping:
+          register: ping_status
+
+        - name: Display result
+          ansible.builtin.debug:
+            var: ping_status
+
+      always:
+        - name: Prepare playbook status message
+          ansible.builtin.set_fact:
+            playbook_status: |
+              Playbook Execution Summary:
+              - Play Name: {{ ansible_play_name }}
+              - Total Hosts: {{ ansible_play_hosts | length }}
+              - List of Hosts: {{ ansible_play_hosts_all }}
+
+              Regards,
+              Network Automation Team
+
+        - name: Sending status report
+          community.general.mail:
+            host: smtp.gmail.com
+            port: 587
+            username: '{{ gmail_username }}'
+            password: '{{ app_password }}'
+            from: '{{ gmail_username }}'
+            to: abhishekdas.tech@gmail.com
+            subject: "{{ ansible_play_name }} Status"
+            body: "{{ playbook_status }}"
+            secure: starttls
+
+    - name: Run if execute_tasks is false
+      ansible.builtin.debug:
+        msg: No need to run block tasks
+      when: not execute_tasks

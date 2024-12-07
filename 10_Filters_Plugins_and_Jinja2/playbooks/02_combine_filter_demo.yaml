@@ -1,0 +1,22 @@
+---
+- name: Combine two dictionaries using combine()
+  hosts: CSR1
+  gather_facts: no
+  vars:
+    basic_config:
+      interface: GigabitEthernet4
+      ip_address: 10.10.14.1
+      subnet_mask: 255.255.255.0
+
+    additional_config:
+      description: Connected to Access switch
+      mtu: 1500
+  
+  tasks:
+    - name: Combine basic_config and additional_config
+      ansible.builtin.set_fact:
+        full_config: "{{ basic_config | combine(additional_config) }}"
+
+    - name: Display the combined config
+      ansible.builtin.debug:
+        var: full_config

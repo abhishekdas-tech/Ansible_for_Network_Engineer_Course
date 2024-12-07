@@ -1,0 +1,24 @@
+---
+- name: Demo on map filter
+  hosts: CSR1
+  gather_facts: true
+  vars:
+    vlan_configurations:
+      - id: 100
+        name: "Marketing"
+        status: "active"
+      - id: 200
+        name: "Sales"
+        status: "inactive"
+      - id: 300
+        name: "Engineering"
+        status: "active"
+  tasks:
+    - name: Apply map filter
+      ansible.builtin.debug:
+        msg: 
+          - "{{ [0] | map('extract', vlan_configurations) }}"
+          - "{{ [0] | map('extract', vlan_configurations, 'id') }}"
+          - "{{ [0,2] | map('extract', vlan_configurations, 'id') }}"
+          - "{{ ['CSR1'] | map('extract', hostvars, 'ntp_server') }}"
+          - "{{ vlan_configurations | map(attribute='name') }}"

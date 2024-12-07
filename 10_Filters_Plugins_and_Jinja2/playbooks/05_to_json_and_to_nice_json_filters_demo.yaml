@@ -1,0 +1,38 @@
+---
+- name: Demo on to_json and to_nice_json Filters
+  hosts: CSR1
+  gather_facts: false
+  vars:
+    router_details:
+      ansible_host: 192.168.29.201
+      dns_server: 4.2.2.2
+      interface_details:
+        - name: GigabitEthernet2
+          description: Connected to C8K1
+          ip_address: 20.20.20.1
+          mask: 255.255.255.0
+        - name: GigabitEthernet3
+          description: Connected to CSR1
+          ip_address: 10.10.10.1
+          mask: 255.255.255.0
+        - name: GigabitEthernet4
+          description: Connected to Core Switch - Faulty Interface
+          ip_address: 10.10.20.1
+          mask: 255.255.255.0
+      device_role: router
+  tasks:
+    - name: Convert variable to JSON format
+      ansible.builtin.debug:
+        msg:
+          - "{{ router_details }}"
+          - "{{ router_details | to_json }}"
+    
+    - name: Copy the content to a file - to_json filter
+      ansible.builtin.copy:
+        content: "{{ router_details | to_json(indent=4) }}"
+        dest: "/home/nw_automation/ansible_course/10_Filters_Plugins_and_Jinja2/playbooks/temp_files/router_details_to_json.json"
+
+    - name: Copy the content to a file - to_nice_json filter
+      ansible.builtin.copy:
+        content: "{{ router_details | to_nice_json(indent=2) }}"
+        dest: "/home/nw_automation/ansible_course/10_Filters_Plugins_and_Jinja2/playbooks/temp_files/router_details_to_nice_json.json"

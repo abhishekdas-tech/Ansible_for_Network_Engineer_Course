@@ -1,0 +1,17 @@
+---
+- name: Demo on ternary filter
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Check interface status
+      cisco.ios.ios_command:
+        commands:
+          - show ip int br | in GigabitEthernet4
+          - show ip int br | in GigabitEthernet3
+      register: output
+
+    - name: Apply ternary filter
+      ansible.builtin.debug:
+        msg: 
+          - "{{ ('up' in output.stdout[0]) | ternary('Interface status is up', 'Need to unshut the interface') }}"
+          - "{{ ('up' in output.stdout[1]) | ternary('Interface status is up', 'Need to unshut the interface') }}"

@@ -1,0 +1,24 @@
+---
+- name: Formatting data - YAML
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Gather facts from Cisco device
+      cisco.ios.ios_facts:
+        gather_subset:
+          - all
+      register: device_facts
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ device_facts | to_yaml }}"
+
+    - name: Copy the content to a file - to_yaml
+      ansible.builtin.copy:
+        content: "{{ device_facts | to_yaml }}"
+        dest: "/home/nw_automation/ansible_course/10_Filters_Plugins_and_Jinja2/playbooks/temp_files/device_facts_to_yaml.yaml"
+
+    - name: Copy the content to a file - to_nice_yaml
+      ansible.builtin.copy:
+        content: "{{ device_facts | to_nice_yaml }}"
+        dest: "/home/nw_automation/ansible_course/10_Filters_Plugins_and_Jinja2/playbooks/temp_files/device_facts_to_nice_yaml.yaml"

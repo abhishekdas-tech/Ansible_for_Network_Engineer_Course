@@ -1,0 +1,25 @@
+---
+- name: Demo on ip_addr filter
+  hosts: CSR1
+  gather_facts: false
+  # vars_prompt:
+  #   - name: my_ip
+  #     prompt: Enter an IP address
+  #     private: false
+  vars:
+    ip_list: ['192.24.2.1', 'host.fqdn', '::1', '192.168.32.0/24', '10.10.10.1/24', 'fe80::100/10', '192.168.29.300', '8.8.8.8', '100.100.1.1']
+  tasks:
+    - name: Validate an IP address
+      ansible.builtin.debug:
+        msg: 
+          # - "{{ my_ip | ansible.utils.ipaddr }}"
+          - "{{ ip_list | ansible.utils.ipaddr }}"
+          - "{{ ip_list | ansible.utils.ipv4 }}"
+          - "{{ ip_list | ansible.utils.ipv6 }}"
+          - "{{ ip_list | ansible.utils.ipaddr('address') }}"
+          - "{{ ip_list | ansible.utils.ipaddr('host') }}"
+          - "{{ ip_list | ansible.utils.ipaddr('private') }}"
+          - "{{ ip_list | ansible.utils.ipaddr('public') }}"
+          - "{{ ip_list | ansible.utils.ipaddr('net') }}"
+          - "{{ ip_list | ansible.utils.ipaddr('net') | ansible.utils.ipaddr('size') }}"
+          - "{{ ip_list | ansible.utils.ipaddr('net') | ansible.utils.ipaddr('broadcast') }}"

@@ -1,0 +1,17 @@
+---
+- name: Demo on env Lookup Plugin
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Display Demo Environment Variables
+      ansible.builtin.debug:
+        msg:
+          - "{{ lookup('env', 'DEMO_USERNAME') }}"
+          - "{{ lookup('env', 'DEMO_PASSWORD') }}"
+          - "{{ lookup('env', 'DEMO_API_KEY') }}"
+
+    - name: Configure Demo users on Cisco device
+      cisco.ios.ios_config:
+        lines:
+          - "username {{ lookup('env', 'DEMO_USERNAME') }} privilege 15 secret {{ lookup('env', 'DEMO_PASSWORD') }}"
+          - "username {{ lookup('env', 'DEMO_USERNAME') }} privilege {{lookup('env', 'DEMO_PRIVILEGE', default='3')}} secret {{ lookup('env', 'DEMO_PASSWORD') }}"

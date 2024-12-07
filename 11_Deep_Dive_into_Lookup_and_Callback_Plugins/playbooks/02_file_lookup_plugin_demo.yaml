@@ -1,0 +1,13 @@
+---
+- name: Demo on File Lookup Plugin
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: File Plugin
+      ansible.builtin.debug:
+        msg:
+          - "{{ lookup('file', '/home/nw_automation/ansible_course/11_Deep_Dive_into_Lookup_and_Callback_Plugins/playbooks/config_files/acl_config.j2') }}"
+          - "{{ lookup('file', 'invalid_file.txt', errors='ignore') }}"
+          - "{{ lookup('file', 'invalid_file.txt', errors='warn') }}"
+          - "{{ lookup('file', '/home/nw_automation/ansible_course/11_Deep_Dive_into_Lookup_and_Callback_Plugins/playbooks/config_files/acl_config.j2', lstrip=true) }}"
+          - "{{ lookup('file', '/home/nw_automation/ansible_course/11_Deep_Dive_into_Lookup_and_Callback_Plugins/playbooks/config_files/acl_config.j2', rstrip=false) }}"

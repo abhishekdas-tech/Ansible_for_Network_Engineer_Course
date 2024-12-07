@@ -1,0 +1,26 @@
+service password-encryption
+!
+ip domain name {{ domain_name }}
+!
+hostname {{ inventory_hostname | upper }}
+!
+service tcp-keepalives-in
+service timestamps debug datetime msec localtime show-timezone
+service timestamps log datetime msec
+service password-encryption
+!
+logging count
+logging buffered 4096 notifications
+logging console notifications
+!
+no ip domain lookup
+!
+{% if dns_server is defined %}
+ip name-server {{ dns_server }}
+{% else %}
+ip name-server {{ dns_server | default('8.8.8.8') }}
+{% endif %}
+!
+{% for ntp_server in ntp_servers %}
+ntp server {{ ntp_server }}
+{% endfor %}

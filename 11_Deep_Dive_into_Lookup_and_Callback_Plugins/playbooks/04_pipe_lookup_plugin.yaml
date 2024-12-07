@@ -1,0 +1,11 @@
+---
+- name: Demo on Lookup Plugin
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Get Control Node IP Address
+      ansible.builtin.debug:
+        msg: 
+          - "{{ lookup('pipe', 'hostname -I') }}"
+          - "{{ lookup('pipe', 'date +%Y-%m-%d-%H:%M:%S') }}"
+          - "{{ lookup('pipe', 'date +%y-%m-%d-%H:%M:%S') }}"

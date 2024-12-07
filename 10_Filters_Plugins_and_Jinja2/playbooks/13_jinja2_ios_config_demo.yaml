@@ -1,0 +1,13 @@
+---
+- name: Demo on ios_config and Jinja2 template 
+  hosts: VIOS1
+  gather_facts: false
+  tasks:
+    - name: Demo on src
+      cisco.ios.ios_config:
+        src: full_config.j2
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

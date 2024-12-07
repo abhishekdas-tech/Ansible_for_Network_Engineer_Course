@@ -1,0 +1,12 @@
+---
+- name: Demo on group_vars and host_vars
+  hosts: CSR1
+  gather_facts: false
+  vars:
+    dns_server: 5.5.5.5
+  tasks:
+    - name: Display NTP and DNS server
+      ansible.builtin.debug:
+        msg:
+          - "{{ ntp_server }}"
+          - "{{ dns_server }}"

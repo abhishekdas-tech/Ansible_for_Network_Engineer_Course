@@ -1,0 +1,87 @@
+---
+- name: Demo on loop and with_items
+  hosts: CSR1
+  gather_facts: false
+  vars:
+    local_usernames:
+      - admin
+      - operator
+      - [admin_ro, operator_ro, [superadmin_ro, superadmin_rw]]
+
+    local_usernames_list_dict:
+      - { usr: admin, pwd: devnet}
+      - { usr: operator, pwd: devent123}
+
+    local_usernames_dict:
+      admin: devnet
+      operator: devnet123
+    
+  tasks:
+    - name: Print items using with_items
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      with_items: "{{ local_usernames }}"
+
+    - name: Print items using loop keyword
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop: "{{ local_usernames }}"
+    
+    - name: Print items using loop keyword (Flatten 1 Level)
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop: "{{ local_usernames | flatten(1) }}"
+    
+    - name: Print items using loop keyword (Flatten 2 Level)
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop: "{{ local_usernames | flatten(2)}}"
+
+    - name: Define the list directly in the task - with_items
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      with_items:
+        - admin
+        - operator
+        - superadmin
+    
+    - name: Define the list directly in the task - loop
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      loop:
+        - admin
+        - operator
+        - superadmin
+
+    - name: Define the nested list directly in the task - with_items
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      with_items:
+        - admin
+        - operator
+        - superadmin
+        - [admin_ro, operator_ro]
+
+    - name: Define the nested list directly in the task - with_list
+      ansible.builtin.debug:
+        msg: "{{ item }}"
+      with_list:
+        - admin
+        - operator
+        - superadmin
+        - [admin_ro, operator_ro]
+
+    - name: List of Dictionaries
+      ansible.builtin.debug:
+        msg: "username {{ item.usr }} privilege 15 secret {{ item.pwd }}"
+      loop: "{{ local_usernames_list_dict }}"
+
+    - name: Print key and value of a Dictionary - with_dict
+      ansible.builtin.debug:
+        msg: "username {{ item.key }} privilege 15 secret {{ item.value }}"
+      with_dict: "{{ local_usernames_dict }}"
+
+    - name: Print key and value of a Dictionary - loop and dict2items
+      ansible.builtin.debug:
+        msg: "username {{ item.key }} privilege 15 secret {{ item.value }}"
+      loop: "{{ local_usernames_dict | dict2items }}"

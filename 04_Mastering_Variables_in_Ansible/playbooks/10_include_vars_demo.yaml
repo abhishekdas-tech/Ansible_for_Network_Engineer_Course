@@ -1,0 +1,23 @@
+---
+- name: Demo on include_vars
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Include cisco specific variables if host is in 'cisco' group
+      ansible.builtin.include_vars:
+        file: cisco_include_vars.yaml
+        name: cisco_vars
+      when: "'cisco' in group_names"
+
+    - name: Include arista specfic variables if host is in 'arista' group
+      ansible.builtin.include_vars:
+        file: arista_include_vars.yaml
+        name: arista_vars
+      when: "'arista' in group_names"
+
+    - name: Display variables
+      ansible.builtin.debug:
+        msg:
+          - "{{ cisco_vars.ntp_server }}"
+          - "{{ cisco_vars.dns_server }}"
+          - "{{  hostvars }}"

@@ -1,0 +1,13 @@
+device:
+  hostname: CSR1
+  mgmt_address: 192.168.29.201
+  interfaces:
+    - name: GigabitEthernet0/1
+      description: Management Interface
+      ip_address: 10.10.10.1
+    - name: GigabitEthernet0/2
+      description: Connected to WAN
+      ip_address: 10.10.10.2
+    - name: GigabitEthernet0/3
+      description: Connected to CSR router
+      ip_address: 10.10.10.3

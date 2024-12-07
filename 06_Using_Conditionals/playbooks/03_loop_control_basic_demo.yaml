@@ -1,0 +1,25 @@
+---
+- name: Demo on loop_control
+  hosts: CSR1
+  gather_facts: false
+  vars:
+    interfaces:
+    - name: GigabitEthernet1
+      description: Management Interface
+      ip: 10.10.10.1
+      subnet: 255.255.255.0
+
+    - name: GigabitEthernet2
+      description: Connected to WAN
+      ip: 10.10.10.2
+      subnet: 255.255.255.0
+  tasks:
+    - name: Print interfaces item
+      ansible.builtin.debug:
+        msg:
+          - "Interface name is {{ interface.name }}"
+      loop: "{{ interfaces }}"
+      loop_control: 
+        loop_var: interface
+        index_var: index
+        label: "Item no: {{ index }} - Configuring interface {{ interface.name }} with IP {{ interface.ip }}"

@@ -1,0 +1,4 @@
+external_username: external_user
+external_password: external_123
+default_username: external_user
+default_password: external_123

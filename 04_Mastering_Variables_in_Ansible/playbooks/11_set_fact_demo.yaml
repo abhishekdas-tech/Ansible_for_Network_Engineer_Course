@@ -1,0 +1,29 @@
+---
+- name: Demo on set_fact module
+  hosts: CSR1
+  gather_facts: false
+  vars:
+    standard_ios: '17.09.06'
+  tasks:
+    - name: Run show version command
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: cisco_ios_command
+
+    - name: Assign to a variable using set_fact
+      ansible.builtin.set_fact:
+        current_ios: "{{ (cisco_ios_command.stdout[0] | regex_findall('Cisco IOS XE Software, Version (\\S+)'))[0] }}"
+
+    - name: Display the current_ios
+      ansible.builtin.debug:
+        var: current_ios
+
+    - name: Check upgra required or not
+      ansible.builtin.set_fact:
+        upgrade_required: "{{ current_ios < standard_ios }}"
+
+    - name: Display if upgrade is required or not
+      ansible.builtin.debug:
+        var: upgrade_required
+      

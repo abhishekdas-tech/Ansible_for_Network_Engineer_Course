@@ -1,0 +1,35 @@
+---
+- name: Demo on loop_control
+  hosts: CSR1
+  gather_facts: false
+  vars:
+    interfaces:
+    - name: GigabitEthernet1
+      description: Management Interface
+      ip: 10.10.10.1
+      subnet: 255.255.255.0
+
+    - name: GigabitEthernet2
+      description: Connected to WAN
+      ip: 10.10.10.2
+      subnet: 255.255.255.0
+  
+  tasks:
+    - name: Fetch interface traffic and assign to a variable
+      cisco.ios.ios_command:
+        commands:
+          - "show interface {{ item.name }} | include rate"
+      register: interface_rate
+      loop: "{{ interfaces }}"
+
+    - name: Display interface_rate variable
+      ansible.builtin.debug:
+        var: interface_rate
+
+    - name: Loop pver the registered variable
+      ansible.builtin.debug:
+        msg: "{{ int_rate.stdout[0] }}"
+      loop: "{{ interface_rate.results }}"
+      loop_control:
+        loop_var: int_rate
+        label: "Traffic on {{ int_rate['item']['name'] }}"

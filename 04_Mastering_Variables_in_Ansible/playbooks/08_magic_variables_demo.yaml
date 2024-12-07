@@ -1,0 +1,13 @@
+---
+- name: Demo on Magic Variables in Ansible
+  hosts: ciscoIOS
+  gather_facts: false
+  tasks:
+    - name: Display Magic Variables
+      ansible.builtin.debug:
+        msg:
+          - "{{ playbook_dir }}"
+          - "{{ inventory_dir }}"
+          - "{{ inventory_file }}"
+          - "{{ inventory_hostname }}"
+          - "{{ ansible_play_hosts }}"

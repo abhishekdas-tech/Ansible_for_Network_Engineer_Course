@@ -1,0 +1,10 @@
+---
+- name: Demo on Magic Variable
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Create a config backup directory
+      ansible.builtin.file:
+        path: "{{ playbook_dir }}/config_backups"
+        state: directory
+        mode: '0755'

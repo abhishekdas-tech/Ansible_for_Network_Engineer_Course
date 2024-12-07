@@ -1,0 +1,9 @@
+description: |
+  This is a multiline
+  string for describing
+  network configurations.
+
+note: >
+  This is a folded block
+  string that will be joined
+  into a single paragraph.

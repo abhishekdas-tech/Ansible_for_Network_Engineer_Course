@@ -1,0 +1,3 @@
+ntp_server: 2.2.2.2
+dns_server: 8.8.8.8
+ansible_network_os: cisco.ios.ios

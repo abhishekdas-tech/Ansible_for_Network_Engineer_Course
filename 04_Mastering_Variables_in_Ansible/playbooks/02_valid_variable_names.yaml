@@ -1,0 +1,20 @@
+---
+- name: Valid Variable Names in Ansible
+  hosts: CSR1
+  gather_facts: false
+  vars:
+    device_hostname: CSR1
+    interface: GigabitEthernet1
+    _ip_address: 192.168.29.100
+    # 1hostname: CSR1
+    # lambda: 1
+
+  tasks:
+    - name: Display variables
+      ansible.builtin.debug:
+        msg:
+          - "{{ device_hostname }}"
+          - "{{ interface }}"
+          - "{{ _ip_address }}"
+          # - "{{ 1hostname }}"
+          # - "{{ lambda }}"

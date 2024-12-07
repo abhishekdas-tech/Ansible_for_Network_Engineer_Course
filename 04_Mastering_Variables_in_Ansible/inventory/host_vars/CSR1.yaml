@@ -1,0 +1,2 @@
+ansible_host: 192.168.29.201
+dns_server: 4.2.2.2

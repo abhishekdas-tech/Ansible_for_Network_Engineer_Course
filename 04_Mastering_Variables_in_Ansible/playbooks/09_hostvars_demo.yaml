@@ -1,0 +1,11 @@
+---
+- name: Demo on hostvars
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Display hostvars
+      ansible.builtin.debug:
+        msg:
+          - "{{ hostvars }}"
+          - "DNS server for {{ inventory_hostname }} is {{ hostvars[inventory_hostname]['dns_server'] }}"
+          - "DNS server for CSR2 is {{ hostvars['CSR2']['dns_server'] }}"

@@ -1,0 +1,6 @@
+# This is a comment for the device configuration
+device:
+  hostname: 'CSR1' # Device hostname
+  serial_number: 123456789
+  logging_enabled: true
+  timezone: null

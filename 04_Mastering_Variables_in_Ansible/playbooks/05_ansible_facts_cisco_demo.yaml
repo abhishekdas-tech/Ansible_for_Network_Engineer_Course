@@ -1,0 +1,14 @@
+---
+- name: Gather Ansible Facts
+  hosts: CSR1
+  gather_facts: true
+  gather_subset: all
+  tasks:
+    - name: Display Ansible Facts
+      ansible.builtin.debug:
+        msg:
+          - "{{ ansible_facts }}"
+          - "{{ ansible_facts.net_model }}"
+          # - "{{ ansible_facts.net_filesystems_info.bootflash: }}"
+          - "{{ ansible_facts.net_filesystems_info['bootflash:'] }}"
+          - "{{ ansible_facts['net_filesystems_info']['bootflash:'] }}"

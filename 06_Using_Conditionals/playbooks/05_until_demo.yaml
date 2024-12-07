@@ -1,0 +1,17 @@
+---
+- name: Until demo
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Check if the interface is up
+      cisco.ios.ios_command:
+        commands:
+          - "show ip interface brief | include GigabitEthernet2"
+      register: interface_status
+      until: "'up' in interface_status.stdout[0]"
+      retries: 5
+      delay: 5
+
+    - name: Print variable
+      ansible.builtin.debug:
+        var: interface_status.stdout[0]

@@ -1,0 +1,46 @@
+---
+- name: Run show commands on Cisco IOS devices
+  hosts: ciscoIOS, ciscoVIOS
+  gather_facts: false
+  tasks:
+    - name: Run show version command
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: cisco_ios_command
+
+    - name: Display cisco_ios_command output
+      ansible.builtin.debug:
+        var: cisco_ios_command
+
+    # - name: Show gather facts
+    #   ansible.builtin.debug:
+    #     var: ansible_facts
+
+- name: Run show commands on Cisco NXOS devices
+  hosts: ciscoNXOS
+  gather_facts: false
+  tasks:
+    - name: Run show version command
+      cisco.nxos.nxos_command:
+        commands:
+          - show version
+      register: cisco_nxos_command
+
+    - name: Display cisco_nxos_command output
+      ansible.builtin.debug:
+        var: cisco_nxos_command 
+
+- name: Run show commands on Arista EOS devices
+  hosts: aristaEOS
+  gather_facts: false
+  tasks:
+    - name: Run show version command
+      arista.eos.eos_command:
+        commands:
+          - show version
+      register: arista_eos_command
+
+    - name: Display arista_eos_command output
+      ansible.builtin.debug:
+        var: arista_eos_command 

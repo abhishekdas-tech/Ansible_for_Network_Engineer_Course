@@ -1,0 +1,64 @@
+---
+- name: Configure Local Username and Password
+  hosts: CSR1
+  gather_facts: false
+  vars:
+    playbook_username: playbook_user
+    playbook_password: playbook_123
+    default_username: playbook_user
+    default_password: playbook_123
+  vars_files:
+    - username_vars.yaml
+  vars_prompt:
+    - name: prompt_username
+      prompt: "Please enter local username "
+      private: false
+    - name: prompt_password
+      prompt: "Please enter password"
+      private: true
+  tasks:
+    - name: Display Inventory Variables
+      ansible.builtin.debug:
+        msg: 
+          - Username defined in Inventory file is {{ inventory_username }}
+          - "{{ inventory_password }} is the password for username {{ inventory_username }}"
+
+    - name: Display Playbook Variables
+      ansible.builtin.debug:
+        msg:
+        - Playbook username is {{ playbook_username }}
+        - "{{ playbook_password }} is the password for username {{ playbook_username }}"
+
+    - name: Display External variables
+      ansible.builtin.debug:
+        msg:
+        - Username defined in External file is {{ external_username }}
+        - "{{ external_password }} is the password for username {{ external_username }}"
+    
+    - name: Display Prompt variables
+      ansible.builtin.debug:
+        msg:
+        - Username defined in prompt is {{ prompt_username }}
+        - "{{ prompt_password }} is the password for username {{ prompt_username }}"
+
+    - name: Display default username to understand the precedence
+      ansible.builtin.debug:
+        msg:
+        - Preferred Username is {{ default_username }}
+        - "{{ default_password }} is the password for username {{ default_username }}"
+
+# - name: Display variables from Play 1 in Play 2
+#   hosts: CSR1
+#   gather_facts: false
+#   tasks:
+#     - name: Display Inventory Variables
+#       ansible.builtin.debug:
+#         msg: 
+#         - Username defined in Inventory file is {{ inventory_username }}
+#         - "{{ inventory_password }} is the password for username {{ inventory_username }}"
+
+#     - name: Display Playbook Variables
+#       ansible.builtin.debug:
+#         msg:
+#         - Playbook username is {{ playbook_username }}
+#         - "{{ playbook_password }} is the password for username {{ playbook_username }}"

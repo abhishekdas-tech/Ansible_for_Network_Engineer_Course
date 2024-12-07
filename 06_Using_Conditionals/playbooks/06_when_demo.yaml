@@ -1,0 +1,19 @@
+---
+- name: Demo on when condition
+  hosts: ciscoIOS
+  gather_facts: false
+  tasks:
+    - name: Check if the interface is up
+      cisco.ios.ios_command:
+        commands:
+          - 'show interface GigabitEthernet2'
+      register: interface_status
+
+    - name: Un-shut interface with down state
+      cisco.ios.ios_command:
+        commands:
+          - 'conf t'
+          - 'interface GigabitEthernet2'
+          - 'no shutdown'
+          - 'end'
+      when: "'down' in interface_status.stdout[0] or 'access-point' in interface_status.stdout[0]"

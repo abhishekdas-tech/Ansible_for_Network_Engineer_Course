@@ -1,0 +1,7 @@
+- name: Slack Update
+  community.general.slack:
+    token: "{{ slack_token }}"
+    msg: "{{ message }}"
+    color: "{{ status_type }}"
+    channel: "#ansible-notifications"
+  delegate_to: localhost

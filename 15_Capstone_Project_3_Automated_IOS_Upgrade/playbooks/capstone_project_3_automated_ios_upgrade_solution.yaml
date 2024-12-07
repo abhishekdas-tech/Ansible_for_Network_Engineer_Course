@@ -1,0 +1,217 @@
+---
+- name: C8K1 IOS Upgrade
+  hosts: C8K1
+  gather_facts: false
+  vars:
+    ansible_command_timeout: 1800
+    scp_server: 192.168.29.144
+    scp_username: nw_automation
+    scp_password: 1234QWer!
+    new_ios_version: 17.09.05a
+    new_ios_image: c8000v-universalk9.17.09.05a.SPA.bin
+    new_image_md5: 8df1fb12978e47dfa64af95edc16e22b
+  tasks:
+    - name: Show version
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: show_ver
+
+    - name: Fetch Current version
+      ansible.builtin.set_fact:
+        current_ios_version: "{{ (show_ver.stdout[0] | regex_findall('Cisco IOS XE Software, Version (\\S+)'))[0] }}"
+
+    - name: Display Current Version
+      ansible.builtin.debug:
+        msg:
+          - "Current IOS Version is : {{ current_ios_version }}"
+          - "New IOS Version is: {{ new_ios_version }}"
+
+    - name: Quit Playbook if Current IOS Version is higher than or equal to the New IOS Version
+      block:
+        - name: Slack Update
+          ansible.builtin.include_tasks: slack_notifications.yaml
+          vars:
+            message: "{{ (current_ios_version >= new_ios_version) | ternary('Current IOS Version is already up to date so IOS upgrade is failed', 'Continuing with the playbook, upgrading IOS version !!!!') }}"
+            status_type: "{{ (current_ios_version >= new_ios_version) | ternary('warning', 'good') }}"
+
+        - name: Fail if Versions are equal or current IOS is newer
+          ansible.builtin.fail:
+            msg: "Current IOS Version is already up to date !!!!"
+          when: current_ios_version >= new_ios_version
+        
+        - name: Debug Message
+          ansible.builtin.debug:
+            msg: "Continuing with the playbook, upgrading IOS version !!!!"  
+
+        - name: Take Configuration Backup
+          cisco.ios.ios_config:
+            backup: yes
+            backup_options:
+              dir_path: "{{ playbook_dir }}/config_backup/"
+              filename: "{{ inventory_hostname }}_config_{{ lookup('pipe', 'date +%d-%m-%Y-%H-%M-%S') }}"
+
+        - name: Slack update
+          ansible.builtin.include_tasks: slack_notifications.yaml
+          vars:
+            message: |
+              -----------------------------------------------------------------------
+              * Configuration backup has been succesfully completed !!! *
+              -----------------------------------------------------------------------
+            status_type: good
+
+        - name: Gather all legacy facts
+          cisco.ios.ios_facts:
+            gather_subset:
+              - hardware
+
+        - name: Fetch available memory
+          ansible.builtin.set_fact:
+            avl_mem: "{{ ansible_facts['net_filesystems_info']['bootflash:']['spacefree_kb'] }}"
+
+        - name: Slack update
+          ansible.builtin.include_tasks: slack_notifications.yaml
+          vars:
+            message: "{{ ((avl_mem | int) > 2000000) | ternary('Space available for new image, Continue with IOS copy !!!!', 'Space not available for new image, remove old files !!!') }}"
+            status_type: "{{ ((avl_mem | int) > 2000000) | ternary('good', 'danger') }}"
+
+        - name: Check if memory available for new IOS image
+          ansible.builtin.assert:
+            that:
+              - "{{ (avl_mem | int) > 2000000 }}"
+            fail_msg: "Space not available for new image, remove old files !!!!"
+            success_msg: "Space available for new image, Continue with IOS copy !!!!"
+
+        # - name: Copy IOS image to device's flash via SCP
+        #   cisco.ios.ios_command:
+        #     commands:
+        #       - command: copy scp://{{ scp_username }}:{{ scp_password }}@{{ scp_server }}/{{ playbook_dir }}/images/{{ new_ios_image }} flash:/{{ new_ios_image }}
+        #         prompt: 'Destination filename \[{{ new_ios_image }}\]?'
+        #         answer: '{{ new_ios_image }}'
+        #   register: image_copy_result
+
+        - name: Dispaly image_copy_result
+          ansible.builtin.debug:
+            var: image_copy_result
+        
+        - name: Slack update
+          ansible.builtin.include_tasks: slack_notifications.yaml
+          vars:
+            message: |
+              -----------------------------------------------------------------------
+              * New IOS image has been succesfully copied to the device !!! *
+              -----------------------------------------------------------------------
+            status_type: good
+
+        - name: Verify MD5 value
+          cisco.ios.ios_command:
+            commands:
+              - verify /md5 flash:{{ new_ios_image }} {{ new_image_md5 }}
+          register: md5_result
+
+        - name: Display md5_result
+          ansible.builtin.debug:
+            var: md5_result
+
+        - name: Fetch md5_result
+          ansible.builtin.set_fact:
+            calculated_md5_hash: "{{ ( md5_result.stdout[0] | regex_findall('.*\\s(\\S+)'))[1] }}"
+
+        - name: Display calculated_md5_hash
+          ansible.builtin.debug:
+            var: calculated_md5_hash
+
+        - name: Slack update
+          ansible.builtin.include_tasks: slack_notifications.yaml
+          vars:
+            message: "{{ (calculated_md5_hash == new_image_md5 and 'Verified' in md5_result.stdout[0]) | ternary('MD5 hash is matching, continue with IOS upgrade', 'MD5 hash is not maching !!!') }}"
+            status_type: "{{ (calculated_md5_hash == new_image_md5 and 'Verified' in md5_result.stdout[0]) | ternary('good', 'danger') }}"
+
+        - name: Compare md5 value
+          ansible.builtin.assert:
+            that:
+              - "{{ calculated_md5_hash == new_image_md5 and 'Verified' in md5_result.stdout[0] }}"
+            fail_msg: "MD5 hash is not matching !!!!"
+            success_msg: "MD5 hash is matching, continue with IOS Upgrade"
+
+        - name: Set boot system - bundle mode
+          cisco.ios.ios_config:
+            lines:
+              - "no boot system"
+              - " boot system flash:{{ new_ios_image }}"
+            save_when: always
+        
+        - name: Slack update - Reload
+          ansible.builtin.include_tasks: slack_notifications.yaml
+          vars:
+            message: |
+              -----------------------------------------------------------------------
+              * Reloading the device: {{ inventory_hostname }} !!!!!!!!! *
+              -----------------------------------------------------------------------
+            status_type: danger
+
+        - name: "Relaoding {{ inventory_hostname }} device"
+          cisco.ios.ios_command:
+            commands:
+              - command: 'reload'
+                prompt: 'confirm'
+                answer: 'y'
+
+        - name: Pause for 10 minutes
+          ansible.builtin.pause:
+            minutes: 10
+      
+      always:
+        - name: Show new IOS version
+          cisco.ios.ios_command:
+            commands:
+              - show version
+          register: show_new_ver
+
+        - name: Check if versions aer equal or current IOS is newer
+          ansible.builtin.debug:
+            msg: "IOS upgrade is not required for {{ inventory_hostname }}"
+          when: current_ios_version >= new_ios_version
+
+        - name: Slack update - upgrade not required
+          ansible.builtin.include_tasks: slack_notifications.yaml
+          vars:
+            message: |
+              -----------------------------------------------------------------------
+              * IOS upgrade is not required for {{ inventory_hostname }} !!!!!!!!! *
+              -----------------------------------------------------------------------
+            status_type: warning
+          when: current_ios_version >= new_ios_version
+
+        - name: Fetch Current IOS Version after upgrade
+          ansible.builtin.set_fact:
+            upgraded_ios_version: "{{ (show_new_ver.stdout[0] | regex_findall('Cisco IOS XE Software, Version (\\S+)'))[0] }}"
+          when: current_ios_version < new_ios_version
+
+        - name: IOS Upgrade Status
+          ansible.builtin.assert:
+            that:
+              - "{{ upgraded_ios_version == new_ios_version }}"
+            fail_msg: "Upgrade for {{ inventory_hostname }} was not successful !!!!"
+            success_msg: "{{ inventory_hostname }} is successfully upgraded to {{ new_ios_version }}"
+          when: current_ios_version < new_ios_version
+
+        - name: Slack update - Successful Upgrade
+          ansible.builtin.include_tasks: slack_notifications.yaml
+          vars:
+            message: |
+              -----------------------------------------------------------------------
+              * {{ inventory_hostname }} is successfully upgraded to {{ new_ios_version }} *
+              -----------------------------------------------------------------------
+            status_type: good
+          when: upgraded_ios_version == new_ios_version 
+
+        - name: Slack update - Successful Upgrade
+          ansible.builtin.include_tasks: slack_notifications.yaml
+          vars:
+            message: |
+              -----------------------------------------------------------------------
+              * Upgrade for {{ inventory_hostname }} was not successful !!!! *
+              -----------------------------------------------------------------------
+            status_type: danger
+          when: upgraded_ios_version != new_ios_version

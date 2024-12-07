@@ -1,0 +1,16 @@
+---
+- name: Demo on ios_config
+  hosts: ciscoIOS
+  gather_facts: false
+  tasks:
+    - name: Configure Interface
+      cisco.ios.ios_config:
+        lines:
+          - description Configured using Ansible Automation Platform
+        parents:
+          - interface GigabitEthernet4
+      register: output
+    
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

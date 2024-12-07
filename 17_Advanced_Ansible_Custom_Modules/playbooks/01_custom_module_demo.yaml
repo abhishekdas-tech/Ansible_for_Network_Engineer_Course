@@ -1,0 +1,15 @@
+---
+- name: Demo on Custom Module - Port Security
+  hosts: VIOS1
+  gather_facts: false
+  tasks:
+    - name: Configure Port Security on Cisco device
+      cisco_port_security:
+        interface: "GigabitEthernet0/1"
+        max_mac: 2
+        violation: restrict
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        var: output

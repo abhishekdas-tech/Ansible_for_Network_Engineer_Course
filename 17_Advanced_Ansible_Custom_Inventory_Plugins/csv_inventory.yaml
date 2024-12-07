@@ -1,0 +1,2 @@
+plugin: csv_inventory
+path_to_csv: demo_inventory.csv

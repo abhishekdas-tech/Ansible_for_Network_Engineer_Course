@@ -1,0 +1,48 @@
+[code]
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ header }}</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 18px;
+            text-align: left;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        th {
+            background-color: #000;
+        }
+    </style>
+</head>
+<body>
+    <h1>{{ header }}</h1>
+    <table style="border-collapse: collapse; width: 100%; text-align: left;">
+        <thead>
+            <tr style="background-color: #000; color: #FFDE59">
+                <th style="border: 1px solid #ddd; padding: 8px;">Interface</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">IP Address</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Protocol</th>
+                <th style="border: 1px solid #ddd; padding: 8px;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in parsed_output %}
+            <tr>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ item.interface }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ item.ip_address }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ item.proto }}</td>
+                <td style="border: 1px solid #ddd; padding: 8px;">{{ item.status }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
+[/code]

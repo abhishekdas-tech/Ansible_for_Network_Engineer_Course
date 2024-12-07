@@ -1,0 +1,12 @@
+---
+- name: Create new local username
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Configure new username
+      cisco.ios.ios_user:
+        name: "{{ new_username }}"
+        configured_password: "{{ new_password }}"
+        password_type: secret
+        privilege: 15
+        state: present

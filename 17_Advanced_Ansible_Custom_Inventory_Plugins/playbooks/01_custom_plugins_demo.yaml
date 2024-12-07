@@ -1,0 +1,8 @@
+---
+- name: Demo on Custom Inventory Plugin
+  hosts: EU
+  gather_facts: false
+  tasks:
+    - name: Testing Dynamic Inventory
+      ansible.builtin.debug:
+        msg: "Task is running on {{ ansible_host }} with {{ ansible_network_os }}"

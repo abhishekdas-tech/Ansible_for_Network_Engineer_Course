@@ -1,0 +1,28 @@
+---
+- name: Demo on ServiceNow ITSM Incident
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Updating Incident using ServiceNow ITSM
+      servicenow.itsm.incident:
+        instance:
+          host: "{{ snow_host }}"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
+        state: in_progress
+        number: INC0010012
+        other:
+          work_notes: We are currently investigating this issue
+      delegate_to: localhost
+    
+    - name: Closing Incident using ServiceNow ITSM
+      servicenow.itsm.incident:
+        instance:
+          host: "{{ snow_host }}"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
+        state: closed
+        number: INC0010012
+        close_code: "Solution provided"
+        close_notes: "Issue is resolved so closing this incident"
+      delegate_to: localhost

@@ -1,0 +1,34 @@
+---
+- name: Demo on ServiceNow ITSM Incident
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Check Interface Status
+      cisco.ios.ios_command:
+        commands:
+          - show ip interface brief | include GigabitEthernet4
+      register: show_interface_status
+
+    - name: Create Incident using ServiceNow ITSM
+      servicenow.itsm.incident:
+        instance:
+          host: "{{ snow_host }}"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
+        state: new
+        caller: ansible.notifications
+        short_description: "GigabitEthernet4 Interface on {{ ansible_play_hosts[0] }} is currently down"
+        description: |
+          GigabitEthernet4 Interface on {{ ansible_play_hosts[0] }} is currently down.
+          Please investigate and resolve the issue on priority.
+        impact: low
+        urgency: low
+        other:
+          category: Network
+      when: "'up' not in show_interface_status.stdout[0]"
+      register: snow_output
+      delegate_to: localhost
+
+    - name: Display snow_output
+      ansible.builtin.debug:
+        var: snow_output

@@ -1,0 +1,77 @@
+---
+- name: Demo on ServiceNow Incident Update
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Check Interface Status
+      cisco.ios.ios_command:
+        commands:
+          - show ip interface brief
+      register: show_interface_status
+
+    - name: Parse using NTC templates
+      ansible.utils.cli_parse:
+        text: "{{ show_interface_status.stdout[0] }}"
+        parser:
+          command: show ip interface brief
+          name: ansible.netcommon.ntc_templates
+        set_fact: parsed_output
+
+    - name: Render Jinja2 template
+      ansible.builtin.set_fact:
+        snow_update_1: "{{ lookup('template', 'snow_update_1_template.j2') }}"
+      vars:
+        header: Current Interface Status
+      
+    - name: Update ServiceNow Incident
+      servicenow.servicenow.snow_record:
+        username: "{{ snow_username }}"
+        password: "{{ snow_password }}"
+        instance: "{{ snow_instance }}"
+        state: present
+        number: INC0010011
+        data:
+          work_notes: "{{ snow_update_1 }}"
+      delegate_to: localhost
+
+    - name: Unshut the Interface
+      cisco.ios.ios_config:
+        lines:
+          - no shutdown
+        parents:
+          - interface GigabitEthernet4
+
+    - name: Pause for few seconds
+      ansible.builtin.pause:
+        seconds: 20
+
+    - name: Check Interface Status
+      cisco.ios.ios_command:
+        commands:
+          - show ip interface brief
+      register: show_interface_status_2
+
+    - name: Parse using NTC templates
+      ansible.utils.cli_parse:
+        text: "{{ show_interface_status_2.stdout[0] }}"
+        parser:
+          command: show ip interface brief
+          name: ansible.netcommon.ntc_templates
+        set_fact: parsed_output_2
+
+    - name: Send to Jinja2 template
+      ansible.builtin.set_fact:
+        snow_update_2: "{{ lookup('template', 'snow_update_2_template.j2') }}"
+      vars:
+        header: Interface Status After Changes
+    
+    - name: Update ServiceNow Incident
+      servicenow.servicenow.snow_record:
+        username: "{{ snow_username }}"
+        password: "{{ snow_password }}"
+        instance: "{{ snow_instance }}"
+        state: present
+        number: INC0010011
+        data:
+          work_notes: "{{ snow_update_2 }}"
+      delegate_to: localhost

@@ -1,0 +1,40 @@
+---
+- name: Configure New VLAN
+  hosts: "{{ device }}"
+  gather_facts: false
+  tasks:
+    - name: Configure VLANS
+      cisco.ios.ios_vlans:
+        config:
+          - name: "{{ vlan_name }}"
+            vlan_id: "{{ new_vlan }}"
+            state: active
+            shutdown: disabled
+      register: output
+
+    - name: Allow vlan on trunk port
+      cisco.ios.ios_config:
+        lines:
+          - switchport trunk allowed vlan add {{ new_vlan }}
+        parents: "{{ item }}" 
+      loop:
+        - interface GigabitEthernet1/0
+        - interface GigabitEthernet1/1
+        - interface GigabitEthernet1/2
+        - interface GigabitEthernet1/3
+
+    - name: Save the configuration
+      cisco.ios.ios_config:
+        save_when: always
+
+    - name: Update ServiceNow Request
+      servicenow.servicenow.snow_record:
+        username: "{{ snow_username }}"
+        password: "{{ snow_password }}"
+        instance: "{{ snow_instance }}"
+        table: sc_req_item
+        state: present
+        number: "{{ snow_request }}"
+        data:
+          work_notes: "VLAN {{ new_vlan }} has been successfully configured"
+          state: 3

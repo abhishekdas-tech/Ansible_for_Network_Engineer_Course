@@ -1,0 +1,14 @@
+---
+- name: Demo on ServiceNow Incident Update
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Update ServiceNow Incident
+      servicenow.servicenow.snow_record:
+        username: "{{ snow_username }}"
+        password: "{{ snow_password }}"
+        instance: "{{ snow_instance }}"
+        state: present
+        number: INC0010011
+        data:
+          work_notes: "We are currently investigating this issue"

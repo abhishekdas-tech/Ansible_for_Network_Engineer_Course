@@ -1,0 +1,42 @@
+---
+- name: Demo on ServiceNow ITSM Change Request
+  hosts: localhost
+  gather_facts: false
+  tasks:
+    - name: Create Change Request using ServiceNow ITSM
+      servicenow.itsm.change_request:
+        instance:
+          host: "{{ snow_host }}"
+          username: "{{ snow_username }}"
+          password: "{{ snow_password }}"
+        state: new
+        type: standard
+        requested_by: ansible.notifications
+        short_description: Change Interface Description on CSR1 router
+        description: |
+          This change is to update the GigabitEthernet4 interface description
+        category: Network
+        priority: moderate
+        risk: low
+        impact: low
+        other:
+          cmdb_ci: CSR1
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        var: output
+
+    # - name: Change State for Change Request using ServiceNow ITSM
+    #   servicenow.itsm.change_request:
+    #     instance:
+    #       host: "{{ snow_host }}"
+    #       username: "{{ snow_username }}"
+    #       password: "{{ snow_password }}"
+    #     state: scheduled
+    #     number: CHG0030005
+    #     assignment_group: Network
+    #     other:
+    #       assigned_to: david.loo
+
+        

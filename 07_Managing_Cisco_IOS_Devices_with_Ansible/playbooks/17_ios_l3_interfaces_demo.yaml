@@ -1,0 +1,21 @@
+---
+- name: Demo on resource ios_l3_interfaces
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Configure IPv4 Address
+      cisco.ios.ios_l3_interfaces:
+        config:
+          - name: GigabitEthernet4
+            ipv4:
+              - address: 10.10.20.1/24
+          - name: GigabitEthernet3
+            ipv4:
+              - address: 100.100.100.1/24
+                secondary: true
+        state: merged
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

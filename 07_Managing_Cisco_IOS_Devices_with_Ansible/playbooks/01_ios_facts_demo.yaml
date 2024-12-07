@@ -1,0 +1,18 @@
+---
+- name: Demo on ios_facts
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Gather all legacy facts
+      cisco.ios.ios_facts:
+        gather_subset:
+          - hardware
+        available_network_resources: true
+        gather_network_resources:
+          - bgp_global
+          - ospfv2
+          - static_routes
+
+    - name: Display facts
+      ansible.builtin.debug:
+        msg: "{{ ansible_facts }}"

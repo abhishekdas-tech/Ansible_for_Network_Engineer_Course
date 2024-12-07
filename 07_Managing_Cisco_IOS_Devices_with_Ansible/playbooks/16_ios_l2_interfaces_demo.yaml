@@ -1,0 +1,56 @@
+---
+- name: Demo on resource ios_l2_interfaces
+  hosts: VIOS1
+  gather_facts: false
+  tasks:
+    - name: Configure VLANs
+      cisco.ios.ios_vlans:
+        config:
+          - name: VLAN_10
+            vlan_id: 10
+            state: active
+            shutdown: disabled
+          - name: VLAN_20
+            vlan_id: 20
+            state: active
+            shutdown: disabled
+          - name: VLAN_30
+            vlan_id: 30
+            state: active
+            shutdown: disabled
+          - name: VLAN_40
+            vlan_id: 40
+            state: active
+            shutdown: disabled
+          - name: VLAN_50
+            vlan_id: 50
+            state: active
+            shutdown: disabled
+        state: merged
+
+    - name: Configure access port
+      cisco.ios.ios_l2_interfaces:
+        config:
+          - name: GigabitEthernet0/1
+            mode: access
+            access:
+              vlan: 10
+            voice:
+              vlan: 50
+        state: merged
+
+    - name: Configure trunk port
+      cisco.ios.ios_l2_interfaces:
+        config:
+          - name: GigabitEthernet1/0
+            trunk:
+              allowed_vlans:
+                - 10-50
+              native_vlan: 10
+              encapsulation: dot1q
+        state: merged
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

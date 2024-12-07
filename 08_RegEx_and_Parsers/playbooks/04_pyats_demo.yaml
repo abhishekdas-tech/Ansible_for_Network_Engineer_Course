@@ -1,0 +1,23 @@
+---
+- name: Demo on pyATS parser
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: show command
+      cisco.ios.ios_command:
+        commands:
+          - show version
+      register: show_command
+
+    - name: pyATS Templates CLI Parser
+      ansible.utils.cli_parse:
+        # command: show ip interface brief
+        text: "{{ show_command.stdout[0] }}"
+        parser:
+          command: show version
+          name: ansible.netcommon.pyats
+        set_fact: output
+      
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

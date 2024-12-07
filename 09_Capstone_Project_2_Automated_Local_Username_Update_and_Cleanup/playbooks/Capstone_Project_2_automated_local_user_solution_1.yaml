@@ -1,0 +1,43 @@
+---
+- name: Create new local username and remove the old usernames
+  hosts: CSR1
+  gather_facts: false
+  vars_prompt:
+    - name: new_username
+      prompt: "Please provide new username "
+      private: false
+    - name: new_password
+      prompt: "Please enter new password "
+      private: true
+  tasks:
+    - name: Configure new username
+      cisco.ios.ios_config:
+        lines:
+          - username {{ new_username }} privilege 15 secret {{ new_password }}
+        save_when: always
+
+    - name: Fetch existing usernames
+      cisco.ios.ios_command:
+        commands:
+          - show running-config | in username
+      register: username_details
+
+    - name: Extract username using RegEx
+      ansible.builtin.set_fact:
+        extracted_usernames: "{{ username_details.stdout[0] | regex_findall('username (\\S+)') }}"
+
+    - name: Display Extracted usernames
+      ansible.builtin.debug:
+        var: extracted_usernames
+
+    - name: Remove Old Usernames
+      cisco.ios.ios_command:
+        commands:
+          - 'conf t'
+          - command: 'no username {{ item }}'
+            prompt: 'This operation will remove all username related configurations with same name'
+            answer: 'y'
+          - 'end'
+      loop: "{{ extracted_usernames }}"
+      when: "item != 'nw_automation' and item != new_username"
+

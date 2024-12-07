@@ -1,0 +1,12 @@
+---
+- name: Demo on ios_config
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Demo on diff_against
+      cisco.ios.ios_config:
+        lines:
+          - descriptiong Connected to Management Interface
+        parents:
+          - interface GigabitEthernet1
+        

@@ -1,0 +1,22 @@
+---
+- name: Demo on ios_commands
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Send show commands
+      cisco.ios.ios_command:
+        commands:
+          - 'show ip interface brief'
+          - 'show ip interface brief | include GigabitEthernet2'
+          - 'show ip interface brief | include GigabitEthernet3'
+        match: any
+        wait_for:
+          - result[1] contains up
+          - result[2] contains up
+        interval: 10
+        retries: 10
+      register: show_commands
+
+    - name: Display show_commands
+      ansible.builtin.debug:
+        msg: "{{ show_commands }}"

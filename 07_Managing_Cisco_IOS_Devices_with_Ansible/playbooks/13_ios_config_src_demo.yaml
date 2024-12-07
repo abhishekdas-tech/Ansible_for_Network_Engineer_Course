@@ -1,0 +1,13 @@
+---
+- name: Demo on ios_config
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Demo on src
+      cisco.ios.ios_config:
+        src: templates/CSR1_interface_config.cfg
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

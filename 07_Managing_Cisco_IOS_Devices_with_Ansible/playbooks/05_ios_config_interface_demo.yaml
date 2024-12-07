@@ -1,0 +1,17 @@
+---
+- name: Demo on ios_config after
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Configure Interface
+      cisco.ios.ios_config:
+        lines:
+          - description Connected to CSR2
+          - ip address 10.10.10.1 255.255.255.0
+        parents:
+          - interface GigabitEthernet3
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

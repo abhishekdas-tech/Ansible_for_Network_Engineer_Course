@@ -1,0 +1,83 @@
+---
+- name: Demo on resource ios_interfaces
+  hosts: VIOS1
+  gather_facts: false
+  tasks:
+    # - name: Gather existing details for all interfaces
+    #   cisco.ios.ios_interfaces:
+    #     state: gathered
+    #   register: output
+
+    # - name: Merge new configuration
+    #   cisco.ios.ios_interfaces:
+    #     config:
+    #       - name: GigabitEthernet0/1
+    #         description: Connected to User port
+    #         mtu: 9216
+    #         speed: 100
+    #         duplex: full
+    #         enabled: true
+    #     state: merged
+    #   register: output
+
+    # - name: Replace configuration
+    #   cisco.ios.ios_interfaces:
+    #     config:
+    #       - name: GigabitEthernet0/1
+    #         description: Connected to User port - configured using replace
+    #         enabled: false
+    #     state: replaced
+    #   register: output
+
+    # - name: Override configuration
+    #   cisco.ios.ios_interfaces:
+    #     config:
+    #       - name: GigabitEthernet0/0
+    #         mode: layer3
+    #         description: Mgmt Interface
+    #         enabled: true
+    #       - name: GigabitEthernet0/2
+    #         description: Connected to User port
+    #         enabled: false
+    #     state: overridden
+    #   register: output
+
+    # - name: Render configuration
+    #   cisco.ios.ios_interfaces:
+    #     config:
+    #       - name: Loopback100
+    #         description: Render Loopback configuration
+    #     state: rendered
+    #   register: output
+
+    # - name: Parse configuration
+    #   cisco.ios.ios_interfaces:
+    #     running_config: "{{ lookup('file', 'templates/loopback_config.cfg') }}"
+    #     state: parsed
+    #   register: output
+
+    # - name: Merge Loopback configuration
+    #   cisco.ios.ios_interfaces:
+    #     config:
+    #       - name: Loopback100
+    #         description: Merge Loopback configuration
+    #     state: merged
+    #   register: output
+
+    # - name: Purge Loopback
+    #   cisco.ios.ios_interfaces:
+    #     config:
+    #       - name: Loopback100
+    #     state: purged
+    #   register: output
+
+    - name: Delete Interface
+      cisco.ios.ios_interfaces:
+        config:
+          - name: GigabitEthernet0/2
+        state: deleted
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

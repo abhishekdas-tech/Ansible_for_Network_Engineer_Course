@@ -1,0 +1,57 @@
+---
+- name: Demo on ios_config
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Configure access-list
+      cisco.ios.ios_config:
+        lines:
+          - 10 permit ip host 10.10.10.10 any log
+          - 20 permit ip host 20.20.20.20 any log
+          - 30 permit ip host 30.30.30.30 any log
+          - 40 permit ip host 40.40.40.40 any log
+          - 50 permit ip host 50.50.50.50 any log
+        parents:
+          - ip access-list extended mgmt-acl
+        before:
+          - ip access-list extended mgmt-acl
+          - no 20
+      
+    - name: Demo on match exact
+      cisco.ios.ios_config:
+        lines:
+          - 10 permit ip host 10.10.10.10 any log
+          - 20 permit ip host 20.20.20.20 any log
+          - 30 permit ip host 30.30.30.30 any log
+          - 40 permit ip host 40.40.40.40 any log
+          - 50 permit ip host 50.50.50.50 any log
+        parents:
+          - ip access-list extended mgmt-acl-new
+        before:
+          - no ip access-list extended mgmt-acl-new
+        match: exact
+
+    # - name: Demo on match options
+    #   cisco.ios.ios_config:
+    #     lines:
+    #       - 10 permit ip host 10.10.10.10 any log
+    #       - 20 permit ip host 20.20.20.20 any log
+    #     parents:
+    #       - ip access-list extended match-demo
+    #     match: line
+    #   register: output
+
+    - name: Demo on match options strict
+      cisco.ios.ios_config:
+        lines:
+          - 20 permit ip host 20.20.20.20 any log
+          - 10 permit ip host 10.10.10.10 any log
+        parents:
+          - ip access-list extended match-demo
+        match: strict
+      register: output
+
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

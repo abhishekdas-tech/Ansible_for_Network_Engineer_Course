@@ -1,0 +1,26 @@
+---
+- name: Create new local username and remove the old usernames
+  hosts: CSR1
+  gather_facts: false
+  vars_prompt:
+  - name: new_username
+    prompt: "Provide new username "
+    private: false
+  - name: new_password
+    prompt: "Provide new password "
+    private: true
+  tasks:
+    - name: Configure new username
+      cisco.ios.ios_user:
+        name: "{{ new_username }}"
+        configured_password: "{{ new_password }}"
+        password_type: secret
+        privilege: 15
+        state: present
+
+    - name: Remove old usernames except nw_automation
+      cisco.ios.ios_user:
+        aggregate:
+          - name: nw_automation
+          - name: "{{ new_username }}"
+        purge: true

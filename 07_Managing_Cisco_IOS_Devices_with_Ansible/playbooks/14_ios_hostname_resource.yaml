@@ -1,0 +1,16 @@
+---
+- name: Demo on resource hostname
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Configure hostname
+      cisco.ios.ios_hostname:
+        # config:
+        #   hostname: CSR1-rendered
+        # running_config: hostname CSR1
+        state: deleted
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

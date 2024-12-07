@@ -1,0 +1,20 @@
+---
+- name: Demo on ios_config
+  hosts: ciscoIOS
+  gather_facts: false
+  tasks:
+    - name: Configure Multiple Interfaces
+      cisco.ios.ios_config:
+        lines:
+          - description {{ item.description }}
+        parents:
+          - interface {{ item.name }}
+        after:
+          - shutdown
+          - no logging event link-status
+      loop: "{{ interface_details }}"
+      register: output
+
+    - name: Display output
+      ansible.builtin.debug:
+        msg: "{{ output }}"

@@ -1,0 +1,20 @@
+---
+- name: Demo on ignore_errors
+  hosts: CSR1, VIOS1
+  gather_facts: false
+  tasks:
+    - name: Display interface ip
+      cisco.ios.ios_command:
+        commands:
+          - show ip interface brief
+
+    - name: Display interface status
+      cisco.ios.ios_command:
+        commands:
+          - show interface status
+      ignore_errors: yes
+
+    - name: Display version
+      cisco.ios.ios_command:
+        commands:
+          - show version

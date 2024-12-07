@@ -1,0 +1,21 @@
+---
+- name: Demo on Ansible Strategies
+  hosts: CSR1
+  gather_facts: false
+  # strategy: free
+  # strategy: debug
+  tasks:
+    - name: show command
+      cisco.ios.ios_command:
+        commands:
+          - show ip interface brief
+
+    - name: Wait for few seconds
+      ansible.builtin.wait_for:
+        timeout: "{{ delay }}"
+      debugger: on_failed
+      
+    - name: show version
+      cisco.ios.ios_command:
+        commands:
+          - show version

@@ -1,0 +1,21 @@
+---
+- name: Demo on failed_when and changed_when
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Gather all legacy facts
+      cisco.ios.ios_facts:
+        gather_subset:
+          - hardware
+    
+    - name: Fetch available memory
+      ansible.builtin.set_fact:
+        avl_mem: "{{ ansible_facts['net_filesystems_info']['bootflash:']['spacefree_kb'] }}"
+      failed_when: "{{ (avl_mem | int) < 5000000 }}"
+
+    - name: Check interface status
+      cisco.ios.ios_command:
+        commands:
+          - 'show ip interface brief | in GigabitEthernet4'
+      register: output
+      changed_when: "{{ 'up' not in output.stdout[0] }}"

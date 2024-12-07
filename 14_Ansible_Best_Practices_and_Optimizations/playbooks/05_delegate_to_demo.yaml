@@ -1,0 +1,30 @@
+---
+- name: Demo on delegate_to
+  hosts: CSR1, CSR2
+  gather_facts: false
+  vars:
+    precheck_cmds:
+      - "show ip interface brief"
+      - "show interfaces"
+      - "show version"
+      - "show interface description"
+  tasks: 
+    - name: Pre-check commands
+      cisco.ios.ios_command:
+        commands: "{{ item }}"
+      loop: "{{ precheck_cmds }}"
+      register: output
+    
+    - name: Create Directory
+      ansible.builtin.file:
+        path: "{{ playbook_dir }}/temp_files"
+        state: directory
+        mode: '0755'
+      delegate_to: localhost
+      run_once: true
+
+    - name: Copy the content
+      ansible.builtin.copy:
+        content: "{{ output.results | to_nice_json }}"
+        dest: "{{ playbook_dir }}/temp_files/{{ inventory_hostname }}_prechecks_output.json"
+      delegate_to: localhost

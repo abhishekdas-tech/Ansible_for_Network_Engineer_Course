@@ -1,0 +1,26 @@
+---
+- name: Demo on Import tasks
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Import precheck tasks
+      ansible.builtin.import_tasks: "{{ inventory_hostname }}_pre_checks_tasks.yaml"
+      vars:
+        precheck_cmds:
+          - 'show ip interface brief'
+          - 'show interfaces'
+          - 'show version'
+          - 'show interface description'
+
+    - name: Configure description
+      cisco.ios.ios_config:
+        lines:
+          - description Configured using Import Playbook
+        parents:
+          - interface GigabitEthernet4
+
+    - name: Include Postcheck tasks
+      ansible.builtin.import_tasks: post_checks_tasks.yaml
+        
+
+        

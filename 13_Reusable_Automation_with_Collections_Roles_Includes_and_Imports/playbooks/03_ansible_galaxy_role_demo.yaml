@@ -1,0 +1,12 @@
+---
+- name: Demo on role from Ansible Galaxy
+  hosts: CSR2
+  gather_facts: false
+  roles:
+    - role: mohdya.cisco_general_iosxe
+      snmp_servers_list:
+        - 3.3.3.3
+        - 4.4.4.4
+      snmp_community: cisco
+      domain_name: ansible_galaxy.com
+      exec_timeout_min: 30

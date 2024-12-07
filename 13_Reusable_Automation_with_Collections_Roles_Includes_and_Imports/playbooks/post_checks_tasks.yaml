@@ -1,0 +1,12 @@
+---
+- name: Postcheck commands
+  cisco.ios.ios_command:
+    commands:
+      - show run interface GigabitEthernet4
+  register: output2
+
+- name: Copy the content
+  ansible.builtin.copy:
+    content: "{{ output2.stdout[0] | to_nice_json }}"
+    dest: "/home/nw_automation/ansible_course/13_Reusable_Automation_with_Collections_Roles_Includes_and_Imports/temp_files/postchecks_output.json"
+  delegate_to: localhost

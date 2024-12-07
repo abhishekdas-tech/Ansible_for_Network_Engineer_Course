@@ -1,0 +1,30 @@
+---
+- name: Demo on Ansible Vault
+  hosts: CSR1
+  gather_facts: false
+  vars_files: username_details.yaml
+  # vars:
+  #   new_username: vault_user
+  #   new_password: !vault |
+  #         $ANSIBLE_VAULT;1.1;AES256
+  #         33613833666137353763633537383465316230363538323536356562613331646165633333333531
+  #         6131666466373532353939653939313835396131313535340a353532643763616666633038613533
+  #         31653165343166373830356436306333303737383533313434633237383730623831313136363938
+  #         6439356631623835640a353339363461666535376165623937623433363838666336643138643265
+  #         32363435656634393963336165353762373266646537383430633239393034343634
+  tasks:
+    - name: Run show command
+      cisco.ios.ios_command:
+        commands:
+          - show ip int brief
+      register: output
+
+    - name: Display variable
+      ansible.builtin.debug:
+        var: output
+
+    - name: Configure username
+      ansible.builtin.debug:
+        msg:
+          - "{{ new_username }}"
+          - "{{ new_password }}"

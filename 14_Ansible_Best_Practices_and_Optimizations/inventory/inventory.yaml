@@ -1,0 +1,35 @@
+all:
+  children:
+    cisco:
+      children:
+        ciscoIOS:
+          hosts:
+            CSR1:
+            CSR2:
+            CSR3:
+            CSR4:
+            CSR5:
+            CSR6:
+            CSR7:
+            CSR8:
+            CSR9:
+            CSR10:    
+            C8K1:       
+        ciscoNXOS:
+          hosts:
+            NXOS1:  
+            NXOS2:     
+        ciscoVIOS:
+          hosts:
+            VIOS1:            
+    arista:
+      children:
+        aristaEOS:
+          hosts:
+            EOS1:          
+  vars:
+    inventory_username: inventory_user
+    inventory_password: inventory_123
+    default_username: inventory_user
+    default_password: inventory_123
+    ntp_server: 1.1.1.1

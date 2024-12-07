@@ -1,0 +1,17 @@
+---
+- name: Demo on no_log and log_path
+  hosts: CSR1
+  gather_facts: false
+  vars_prompt:
+    - name: new_user
+      prompt: "Please enter local username "
+      private: false
+    - name: new_pass
+      prompt: "Please enter password "
+      private: true
+  tasks:
+    - name: Configure local username and password
+      cisco.ios.ios_config:
+        lines:
+          - "username {{ new_user }} privilege 15 secret {{ new_pass }}"
+      no_log: true

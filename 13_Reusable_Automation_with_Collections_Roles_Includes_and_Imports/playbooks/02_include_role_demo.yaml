@@ -1,0 +1,10 @@
+---
+- name: Demo on Roles
+  hosts: VIOS1
+  gather_facts: false
+  vars:
+    new_vlan: 256
+  tasks:
+    - name: Demo on include role
+      ansible.builtin.include_role:
+        name: demo_role

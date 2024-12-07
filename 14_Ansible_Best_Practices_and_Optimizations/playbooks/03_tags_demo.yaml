@@ -1,0 +1,31 @@
+---
+- name: Demo on Tags
+  hosts: CSR1
+  gather_facts: false
+  tasks:
+    - name: Configure DNS
+      cisco.ios.ios_config:
+        lines:
+          - ip name-server {{ dns_server }}
+      tags: 
+        - dns_config
+        - global_config
+
+    - name: Configure NTP
+      cisco.ios.ios_config:
+        lines:
+          - ntp server {{ ntp_server }}
+      tags: 
+        - ntp_config
+        - global_config
+
+    - name: Configure Domain name
+      cisco.ios.ios_config:
+        lines:
+          - ip domain name {{ domain_name }}
+      tags: domain_name_config
+
+    - name: Show command
+      cisco.ios.ios_command:
+        commands:
+          - show version

@@ -1,0 +1,1 @@
+"Building configuration...\n\nCurrent configuration : 266 bytes\n!\ninterface GigabitEthernet4\n description Configured using Include Playbook again\n ip address 10.10.20.1 255.255.255.0\n ip helper-address 1.1.1.1\n ip helper-address 2.2.2.2\n no logging event link-status\n shutdown\n negotiation auto\n no mop enabled\n no mop sysid\nend"

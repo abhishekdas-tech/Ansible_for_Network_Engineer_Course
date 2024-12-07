@@ -1,0 +1,16 @@
+ansible_connection: ansible.netcommon.network_cli
+ansible_become: true
+ansible_become_method: enable
+ansible_user: nw_automation
+ansible_password: devnet
+ntp_server: 1.1.1.1
+# dns_server: 8.8.8.8
+domain_name: networks2gether.com
+dhcp_server_1: 1.1.1.1
+dhcp_server_2: 2.2.2.2
+ntp_servers:
+  - 1.1.1.1
+  - 2.2.2.2
+  - 3.3.3.3
+gmail_username: ansible.notifications@gmail.com
+app_password: ranrtekibypuplnv

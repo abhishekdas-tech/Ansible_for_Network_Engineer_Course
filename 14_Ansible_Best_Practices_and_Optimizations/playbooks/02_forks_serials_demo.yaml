@@ -1,0 +1,22 @@
+---
+- name: Demo on Forks and Serials
+  hosts: ciscoIOS
+  gather_facts: false
+  serial: 
+    - 30%
+    - 70%
+  tasks:
+    - name: show command
+      cisco.ios.ios_command:
+        commands:
+          - show ip interface brief
+
+    - name: Wait for few seconds
+      ansible.builtin.wait_for:
+        timeout: 5
+      debugger: on_failed
+      
+    - name: show version
+      cisco.ios.ios_command:
+        commands:
+          - show version

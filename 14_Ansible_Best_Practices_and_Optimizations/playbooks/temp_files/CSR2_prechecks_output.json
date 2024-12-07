@@ -1,0 +1,288 @@
+[
+    {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "commands": [
+                    "show ip interface brief"
+                ],
+                "interval": 1,
+                "match": "all",
+                "retries": 9,
+                "wait_for": null
+            }
+        },
+        "item": "show ip interface brief",
+        "stdout": [
+            "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.29.202  YES manual up                    up      \nGigabitEthernet2       30.30.30.1      YES manual up                    up      \nGigabitEthernet3       10.10.10.2      YES manual up                    up      \nGigabitEthernet4       10.10.30.2      YES manual up                    up"
+        ],
+        "stdout_lines": [
+            [
+                "Interface              IP-Address      OK? Method Status                Protocol",
+                "GigabitEthernet1       192.168.29.202  YES manual up                    up      ",
+                "GigabitEthernet2       30.30.30.1      YES manual up                    up      ",
+                "GigabitEthernet3       10.10.10.2      YES manual up                    up      ",
+                "GigabitEthernet4       10.10.30.2      YES manual up                    up"
+            ]
+        ]
+    },
+    {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "commands": [
+                    "show interfaces"
+                ],
+                "interval": 1,
+                "match": "all",
+                "retries": 9,
+                "wait_for": null
+            }
+        },
+        "item": "show interfaces",
+        "stdout": [
+            "GigabitEthernet1 is up, line protocol is up \n  Hardware is CSR vNIC, address is 5000.0003.0000 (bia 5000.0003.0000)\n  Internet address is 192.168.29.202/24\n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \n     reliability 255/255, txload 1/255, rxload 1/255\n  Encapsulation ARPA, loopback not set\n  Keepalive set (10 sec)\n  Full Duplex, 1000Mbps, link type is auto, media type is Virtual\n  output flow-control is unsupported, input flow-control is unsupported\n  ARP type: ARPA, ARP Timeout 04:00:00\n  Last input 00:00:00, output 00:00:00, output hang never\n  Last clearing of \"show interface\" counters never\n  Input queue: 1/375/0/0 (size/max/drops/flushes); Total output drops: 0\n  Queueing strategy: fifo\n  Output queue: 0/40 (size/max)\n  5 minute input rate 0 bits/sec, 0 packets/sec\n  5 minute output rate 0 bits/sec, 0 packets/sec\n     43510 packets input, 21588362 bytes, 0 no buffer\n     Received 0 broadcasts (0 IP multicasts)\n     0 runts, 0 giants, 0 throttles \n     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n     0 watchdog, 0 multicast, 0 pause input\n     9096 packets output, 1384867 bytes, 0 underruns\n     Output 0 broadcasts (0 IP multicasts)\n     0 output errors, 0 collisions, 0 interface resets\n     925 unknown protocol drops\n     0 babbles, 0 late collision, 0 deferred\n     0 lost carrier, 0 no carrier, 0 pause output\n     0 output buffer failures, 0 output buffers swapped out\nGigabitEthernet2 is up, line protocol is up \n  Hardware is CSR vNIC, address is 5000.0003.0001 (bia 5000.0003.0001)\n  Description: Connected to C8K1\n  Internet address is 30.30.30.1/24\n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \n     reliability 255/255, txload 1/255, rxload 1/255\n  Encapsulation ARPA, loopback not set\n  Keepalive set (10 sec)\n  Full Duplex, 1000Mbps, link type is auto, media type is Virtual\n  output flow-control is unsupported, input flow-control is unsupported\n  ARP type: ARPA, ARP Timeout 04:00:00\n  Last input 00:00:10, output 00:00:10, output hang never\n  Last clearing of \"show interface\" counters never\n  Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0\n  Queueing strategy: fifo\n  Output queue: 0/40 (size/max)\n  5 minute input rate 0 bits/sec, 0 packets/sec\n  5 minute output rate 0 bits/sec, 0 packets/sec\n     4873 packets input, 292380 bytes, 0 no buffer\n     Received 0 broadcasts (0 IP multicasts)\n     0 runts, 0 giants, 0 throttles \n     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n     0 watchdog, 0 multicast, 0 pause input\n     4946 packets output, 270612 bytes, 0 underruns\n     Output 0 broadcasts (0 IP multicasts)\n     0 output errors, 0 collisions, 2 interface resets\n     0 unknown protocol drops\n     0 babbles, 0 late collision, 0 deferred\n     1 lost carrier, 0 no carrier, 0 pause output\n     0 output buffer failures, 0 output buffers swapped out\nGigabitEthernet3 is up, line protocol is up \n  Hardware is CSR vNIC, address is 5000.0003.0002 (bia 5000.0003.0002)\n  Description: Connected to CSR2\n  Internet address is 10.10.10.2/24\n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \n     reliability 255/255, txload 1/255, rxload 1/255\n  Encapsulation ARPA, loopback not set\n  Keepalive set (10 sec)\n  Full Duplex, 1000Mbps, link type is auto, media type is Virtual\n  output flow-control is unsupported, input flow-control is unsupported\n  ARP type: ARPA, ARP Timeout 04:00:00\n  Last input 00:00:06, output 00:00:06, output hang never\n  Last clearing of \"show interface\" counters never\n  Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0\n  Queueing strategy: fifo\n  Output queue: 0/40 (size/max)\n  5 minute input rate 0 bits/sec, 0 packets/sec\n  5 minute output rate 0 bits/sec, 0 packets/sec\n     6972 packets input, 421968 bytes, 0 no buffer\n     Received 0 broadcasts (0 IP multicasts)\n     0 runts, 0 giants, 0 throttles \n     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n     0 watchdog, 0 multicast, 0 pause input\n     4912 packets output, 268776 bytes, 0 underruns\n     Output 0 broadcasts (0 IP multicasts)\n     0 output errors, 0 collisions, 2 interface resets\n     0 unknown protocol drops\n     0 babbles, 0 late collision, 0 deferred\n     1 lost carrier, 0 no carrier, 0 pause output\n     0 output buffer failures, 0 output buffers swapped out\nGigabitEthernet4 is up, line protocol is up \n  Hardware is CSR vNIC, address is 5000.0003.0003 (bia 5000.0003.0003)\n  Description: Configured using Include Playbook again\n  Internet address is 10.10.30.2/24\n  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, \n     reliability 255/255, txload 1/255, rxload 1/255\n  Encapsulation ARPA, loopback not set\n  Keepalive set (10 sec)\n  Full Duplex, 1000Mbps, link type is auto, media type is Virtual\n  output flow-control is unsupported, input flow-control is unsupported\n  ARP type: ARPA, ARP Timeout 04:00:00\n  Last input never, output 13:39:20, output hang never\n  Last clearing of \"show interface\" counters never\n  Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0\n  Queueing strategy: fifo\n  Output queue: 0/40 (size/max)\n  5 minute input rate 0 bits/sec, 0 packets/sec\n  5 minute output rate 0 bits/sec, 0 packets/sec\n     0 packets input, 0 bytes, 0 no buffer\n     Received 0 broadcasts (0 IP multicasts)\n     0 runts, 0 giants, 0 throttles \n     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored\n     0 watchdog, 0 multicast, 0 pause input\n     81 packets output, 7878 bytes, 0 underruns\n     Output 0 broadcasts (0 IP multicasts)\n     0 output errors, 0 collisions, 2 interface resets\n     0 unknown protocol drops\n     0 babbles, 0 late collision, 0 deferred\n     1 lost carrier, 0 no carrier, 0 pause output\n     0 output buffer failures, 0 output buffers swapped out"
+        ],
+        "stdout_lines": [
+            [
+                "GigabitEthernet1 is up, line protocol is up ",
+                "  Hardware is CSR vNIC, address is 5000.0003.0000 (bia 5000.0003.0000)",
+                "  Internet address is 192.168.29.202/24",
+                "  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, ",
+                "     reliability 255/255, txload 1/255, rxload 1/255",
+                "  Encapsulation ARPA, loopback not set",
+                "  Keepalive set (10 sec)",
+                "  Full Duplex, 1000Mbps, link type is auto, media type is Virtual",
+                "  output flow-control is unsupported, input flow-control is unsupported",
+                "  ARP type: ARPA, ARP Timeout 04:00:00",
+                "  Last input 00:00:00, output 00:00:00, output hang never",
+                "  Last clearing of \"show interface\" counters never",
+                "  Input queue: 1/375/0/0 (size/max/drops/flushes); Total output drops: 0",
+                "  Queueing strategy: fifo",
+                "  Output queue: 0/40 (size/max)",
+                "  5 minute input rate 0 bits/sec, 0 packets/sec",
+                "  5 minute output rate 0 bits/sec, 0 packets/sec",
+                "     43510 packets input, 21588362 bytes, 0 no buffer",
+                "     Received 0 broadcasts (0 IP multicasts)",
+                "     0 runts, 0 giants, 0 throttles ",
+                "     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored",
+                "     0 watchdog, 0 multicast, 0 pause input",
+                "     9096 packets output, 1384867 bytes, 0 underruns",
+                "     Output 0 broadcasts (0 IP multicasts)",
+                "     0 output errors, 0 collisions, 0 interface resets",
+                "     925 unknown protocol drops",
+                "     0 babbles, 0 late collision, 0 deferred",
+                "     0 lost carrier, 0 no carrier, 0 pause output",
+                "     0 output buffer failures, 0 output buffers swapped out",
+                "GigabitEthernet2 is up, line protocol is up ",
+                "  Hardware is CSR vNIC, address is 5000.0003.0001 (bia 5000.0003.0001)",
+                "  Description: Connected to C8K1",
+                "  Internet address is 30.30.30.1/24",
+                "  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, ",
+                "     reliability 255/255, txload 1/255, rxload 1/255",
+                "  Encapsulation ARPA, loopback not set",
+                "  Keepalive set (10 sec)",
+                "  Full Duplex, 1000Mbps, link type is auto, media type is Virtual",
+                "  output flow-control is unsupported, input flow-control is unsupported",
+                "  ARP type: ARPA, ARP Timeout 04:00:00",
+                "  Last input 00:00:10, output 00:00:10, output hang never",
+                "  Last clearing of \"show interface\" counters never",
+                "  Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0",
+                "  Queueing strategy: fifo",
+                "  Output queue: 0/40 (size/max)",
+                "  5 minute input rate 0 bits/sec, 0 packets/sec",
+                "  5 minute output rate 0 bits/sec, 0 packets/sec",
+                "     4873 packets input, 292380 bytes, 0 no buffer",
+                "     Received 0 broadcasts (0 IP multicasts)",
+                "     0 runts, 0 giants, 0 throttles ",
+                "     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored",
+                "     0 watchdog, 0 multicast, 0 pause input",
+                "     4946 packets output, 270612 bytes, 0 underruns",
+                "     Output 0 broadcasts (0 IP multicasts)",
+                "     0 output errors, 0 collisions, 2 interface resets",
+                "     0 unknown protocol drops",
+                "     0 babbles, 0 late collision, 0 deferred",
+                "     1 lost carrier, 0 no carrier, 0 pause output",
+                "     0 output buffer failures, 0 output buffers swapped out",
+                "GigabitEthernet3 is up, line protocol is up ",
+                "  Hardware is CSR vNIC, address is 5000.0003.0002 (bia 5000.0003.0002)",
+                "  Description: Connected to CSR2",
+                "  Internet address is 10.10.10.2/24",
+                "  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, ",
+                "     reliability 255/255, txload 1/255, rxload 1/255",
+                "  Encapsulation ARPA, loopback not set",
+                "  Keepalive set (10 sec)",
+                "  Full Duplex, 1000Mbps, link type is auto, media type is Virtual",
+                "  output flow-control is unsupported, input flow-control is unsupported",
+                "  ARP type: ARPA, ARP Timeout 04:00:00",
+                "  Last input 00:00:06, output 00:00:06, output hang never",
+                "  Last clearing of \"show interface\" counters never",
+                "  Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0",
+                "  Queueing strategy: fifo",
+                "  Output queue: 0/40 (size/max)",
+                "  5 minute input rate 0 bits/sec, 0 packets/sec",
+                "  5 minute output rate 0 bits/sec, 0 packets/sec",
+                "     6972 packets input, 421968 bytes, 0 no buffer",
+                "     Received 0 broadcasts (0 IP multicasts)",
+                "     0 runts, 0 giants, 0 throttles ",
+                "     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored",
+                "     0 watchdog, 0 multicast, 0 pause input",
+                "     4912 packets output, 268776 bytes, 0 underruns",
+                "     Output 0 broadcasts (0 IP multicasts)",
+                "     0 output errors, 0 collisions, 2 interface resets",
+                "     0 unknown protocol drops",
+                "     0 babbles, 0 late collision, 0 deferred",
+                "     1 lost carrier, 0 no carrier, 0 pause output",
+                "     0 output buffer failures, 0 output buffers swapped out",
+                "GigabitEthernet4 is up, line protocol is up ",
+                "  Hardware is CSR vNIC, address is 5000.0003.0003 (bia 5000.0003.0003)",
+                "  Description: Configured using Include Playbook again",
+                "  Internet address is 10.10.30.2/24",
+                "  MTU 1500 bytes, BW 1000000 Kbit/sec, DLY 10 usec, ",
+                "     reliability 255/255, txload 1/255, rxload 1/255",
+                "  Encapsulation ARPA, loopback not set",
+                "  Keepalive set (10 sec)",
+                "  Full Duplex, 1000Mbps, link type is auto, media type is Virtual",
+                "  output flow-control is unsupported, input flow-control is unsupported",
+                "  ARP type: ARPA, ARP Timeout 04:00:00",
+                "  Last input never, output 13:39:20, output hang never",
+                "  Last clearing of \"show interface\" counters never",
+                "  Input queue: 0/375/0/0 (size/max/drops/flushes); Total output drops: 0",
+                "  Queueing strategy: fifo",
+                "  Output queue: 0/40 (size/max)",
+                "  5 minute input rate 0 bits/sec, 0 packets/sec",
+                "  5 minute output rate 0 bits/sec, 0 packets/sec",
+                "     0 packets input, 0 bytes, 0 no buffer",
+                "     Received 0 broadcasts (0 IP multicasts)",
+                "     0 runts, 0 giants, 0 throttles ",
+                "     0 input errors, 0 CRC, 0 frame, 0 overrun, 0 ignored",
+                "     0 watchdog, 0 multicast, 0 pause input",
+                "     81 packets output, 7878 bytes, 0 underruns",
+                "     Output 0 broadcasts (0 IP multicasts)",
+                "     0 output errors, 0 collisions, 2 interface resets",
+                "     0 unknown protocol drops",
+                "     0 babbles, 0 late collision, 0 deferred",
+                "     1 lost carrier, 0 no carrier, 0 pause output",
+                "     0 output buffer failures, 0 output buffers swapped out"
+            ]
+        ]
+    },
+    {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "commands": [
+                    "show version"
+                ],
+                "interval": 1,
+                "match": "all",
+                "retries": 9,
+                "wait_for": null
+            }
+        },
+        "item": "show version",
+        "stdout": [
+            "Cisco IOS XE Software, Version 17.03.05\nCisco IOS Software [Amsterdam], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.3.5, RELEASE SOFTWARE (fc2)\nTechnical Support: http://www.cisco.com/techsupport\nCopyright (c) 1986-2022 by Cisco Systems, Inc.\nCompiled Wed 09-Feb-22 10:35 by mcpre\n\n\nCisco IOS-XE software, Copyright (c) 2005-2022 by cisco Systems, Inc.\nAll rights reserved.  Certain components of Cisco IOS-XE software are\nlicensed under the GNU General Public License (\"GPL\") Version 2.0.  The\nsoftware code licensed under GPL Version 2.0 is free software that comes\nwith ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such\nGPL code under the terms of GPL Version 2.0.  For more details, see the\ndocumentation or \"License Notice\" file accompanying the IOS-XE software,\nor the applicable URL provided on the flyer accompanying the IOS-XE\nsoftware.\n\n\nROM: IOS-XE ROMMON\n\nCSR2 uptime is 13 hours, 54 minutes\nUptime for this control processor is 13 hours, 56 minutes\nSystem returned to ROM by reload\nSystem image file is \"bootflash:packages.conf\"\nLast reload reason: Unknown reason\n\n\n\nThis product contains cryptographic features and is subject to United\nStates and local country laws governing import, export, transfer and\nuse. Delivery of Cisco cryptographic products does not imply\nthird-party authority to import, export, distribute or use encryption.\nImporters, exporters, distributors and users are responsible for\ncompliance with U.S. and local country laws. By using this product you\nagree to comply with applicable laws and regulations. If you are unable\nto comply with U.S. and local laws, return this product immediately.\n\nA summary of U.S. laws governing Cisco cryptographic products may be found at:\nhttp://www.cisco.com/wwl/export/crypto/tool/stqrg.html\n\nIf you require further assistance please contact us by sending email to\nexport@cisco.com.\n\nLicense Level: ax\nLicense Type: N/A(Smart License Enabled)\nNext reload license Level: ax\n\nThe current throughput level is 1000 kbps \n\n\nSmart Licensing Status: UNREGISTERED/No Licenses in Use\n\ncisco CSR1000V (VXE) processor (revision VXE) with 2071712K/3075K bytes of memory.\nProcessor board ID 96XPGZXQP93\nRouter operating mode: Autonomous\n4 Gigabit Ethernet interfaces\n32768K bytes of non-volatile configuration memory.\n3978416K bytes of physical memory.\n6188032K bytes of virtual hard disk at bootflash:.\n\nConfiguration register is 0x2102"
+        ],
+        "stdout_lines": [
+            [
+                "Cisco IOS XE Software, Version 17.03.05",
+                "Cisco IOS Software [Amsterdam], Virtual XE Software (X86_64_LINUX_IOSD-UNIVERSALK9-M), Version 17.3.5, RELEASE SOFTWARE (fc2)",
+                "Technical Support: http://www.cisco.com/techsupport",
+                "Copyright (c) 1986-2022 by Cisco Systems, Inc.",
+                "Compiled Wed 09-Feb-22 10:35 by mcpre",
+                "",
+                "",
+                "Cisco IOS-XE software, Copyright (c) 2005-2022 by cisco Systems, Inc.",
+                "All rights reserved.  Certain components of Cisco IOS-XE software are",
+                "licensed under the GNU General Public License (\"GPL\") Version 2.0.  The",
+                "software code licensed under GPL Version 2.0 is free software that comes",
+                "with ABSOLUTELY NO WARRANTY.  You can redistribute and/or modify such",
+                "GPL code under the terms of GPL Version 2.0.  For more details, see the",
+                "documentation or \"License Notice\" file accompanying the IOS-XE software,",
+                "or the applicable URL provided on the flyer accompanying the IOS-XE",
+                "software.",
+                "",
+                "",
+                "ROM: IOS-XE ROMMON",
+                "",
+                "CSR2 uptime is 13 hours, 54 minutes",
+                "Uptime for this control processor is 13 hours, 56 minutes",
+                "System returned to ROM by reload",
+                "System image file is \"bootflash:packages.conf\"",
+                "Last reload reason: Unknown reason",
+                "",
+                "",
+                "",
+                "This product contains cryptographic features and is subject to United",
+                "States and local country laws governing import, export, transfer and",
+                "use. Delivery of Cisco cryptographic products does not imply",
+                "third-party authority to import, export, distribute or use encryption.",
+                "Importers, exporters, distributors and users are responsible for",
+                "compliance with U.S. and local country laws. By using this product you",
+                "agree to comply with applicable laws and regulations. If you are unable",
+                "to comply with U.S. and local laws, return this product immediately.",
+                "",
+                "A summary of U.S. laws governing Cisco cryptographic products may be found at:",
+                "http://www.cisco.com/wwl/export/crypto/tool/stqrg.html",
+                "",
+                "If you require further assistance please contact us by sending email to",
+                "export@cisco.com.",
+                "",
+                "License Level: ax",
+                "License Type: N/A(Smart License Enabled)",
+                "Next reload license Level: ax",
+                "",
+                "The current throughput level is 1000 kbps ",
+                "",
+                "",
+                "Smart Licensing Status: UNREGISTERED/No Licenses in Use",
+                "",
+                "cisco CSR1000V (VXE) processor (revision VXE) with 2071712K/3075K bytes of memory.",
+                "Processor board ID 96XPGZXQP93",
+                "Router operating mode: Autonomous",
+                "4 Gigabit Ethernet interfaces",
+                "32768K bytes of non-volatile configuration memory.",
+                "3978416K bytes of physical memory.",
+                "6188032K bytes of virtual hard disk at bootflash:.",
+                "",
+                "Configuration register is 0x2102"
+            ]
+        ]
+    },
+    {
+        "ansible_loop_var": "item",
+        "changed": false,
+        "failed": false,
+        "invocation": {
+            "module_args": {
+                "commands": [
+                    "show interface description"
+                ],
+                "interval": 1,
+                "match": "all",
+                "retries": 9,
+                "wait_for": null
+            }
+        },
+        "item": "show interface description",
+        "stdout": [
+            "Interface                      Status         Protocol Description\nGi1                            up             up       \nGi2                            up             up       Connected to C8K1\nGi3                            up             up       Connected to CSR2\nGi4                            up             up       Configured using Include Playbook again"
+        ],
+        "stdout_lines": [
+            [
+                "Interface                      Status         Protocol Description",
+                "Gi1                            up             up       ",
+                "Gi2                            up             up       Connected to C8K1",
+                "Gi3                            up             up       Connected to CSR2",
+                "Gi4                            up             up       Configured using Include Playbook again"
+            ]
+        ]
+    }
+]

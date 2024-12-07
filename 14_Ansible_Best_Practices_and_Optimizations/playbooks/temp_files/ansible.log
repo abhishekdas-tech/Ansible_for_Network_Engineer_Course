@@ -1,0 +1,607 @@
+2024-12-01 00:01:02,910 p=17089 u=nw_automation n=ansible | PLAY [Demo on no_log and log_path] ****************************************************************************************************************************
+2024-12-01 00:01:02,940 p=17089 u=nw_automation n=ansible | TASK [Configure local username and password] ******************************************************************************************************************
+2024-12-01 00:01:03,453 p=17089 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 00:01:03,459 p=17099 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 00:01:05,848 p=17089 u=nw_automation n=ansible | [WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar to how they appear if present in the running configuration
+on device
+
+2024-12-01 00:01:05,848 p=17089 u=nw_automation n=ansible | changed: [CSR1]
+2024-12-01 00:01:05,850 p=17089 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 00:01:05,850 p=17089 u=nw_automation n=ansible | CSR1                       : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 00:01:05,950 p=17099 u=nw_automation n=ansible | shutdown complete
+2024-12-01 00:01:31,540 p=17110 u=nw_automation n=ansible | ansible-playbook [core 2.17.6]
+  config file = /home/nw_automation/ansible_course/14_Ansible_Best_Practices_and_Optimizations/ansible.cfg
+  configured module search path = ['/home/nw_automation/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  ansible collection location = /home/nw_automation/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.12.3 (main, Nov  6 2024, 18:32:19) [GCC 13.2.0] (/usr/bin/python3)
+  jinja version = 3.1.4
+  libyaml = True
+2024-12-01 00:01:31,540 p=17110 u=nw_automation n=ansible | Using /home/nw_automation/ansible_course/14_Ansible_Best_Practices_and_Optimizations/ansible.cfg as config file
+2024-12-01 00:01:31,540 p=17110 u=nw_automation n=ansible | setting up inventory plugins
+2024-12-01 00:01:31,654 p=17110 u=nw_automation n=ansible | Loading collection ansible.builtin from 
+2024-12-01 00:01:31,664 p=17110 u=nw_automation n=ansible | host_list declined parsing /home/nw_automation/ansible_course/14_Ansible_Best_Practices_and_Optimizations/inventory/inventory.yaml as it did not pass its verify_file() method
+2024-12-01 00:01:31,665 p=17110 u=nw_automation n=ansible | script declined parsing /home/nw_automation/ansible_course/14_Ansible_Best_Practices_and_Optimizations/inventory/inventory.yaml as it did not pass its verify_file() method
+2024-12-01 00:01:31,669 p=17110 u=nw_automation n=ansible | Parsed /home/nw_automation/ansible_course/14_Ansible_Best_Practices_and_Optimizations/inventory/inventory.yaml inventory source with yaml plugin
+2024-12-01 00:01:31,829 p=17110 u=nw_automation n=ansible | Loading collection cisco.ios from /usr/lib/python3/dist-packages/ansible_collections/cisco/ios
+2024-12-01 00:01:31,837 p=17110 u=nw_automation n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2024-12-01 00:01:31,848 p=17110 u=nw_automation n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2024-12-01 00:01:31,848 p=17110 u=nw_automation n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2024-12-01 00:01:31,848 p=17110 u=nw_automation n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2024-12-01 00:01:31,848 p=17110 u=nw_automation n=ansible | PLAYBOOK: 06_log_path_no_log_demo.yaml ************************************************************************************************************************
+2024-12-01 00:01:31,849 p=17110 u=nw_automation n=ansible | 1 plays in playbooks/06_log_path_no_log_demo.yaml
+2024-12-01 00:01:42,382 p=17110 u=nw_automation n=ansible | PLAY [Demo on no_log and log_path] ****************************************************************************************************************************
+2024-12-01 00:01:42,408 p=17110 u=nw_automation n=ansible | TASK [Configure local username and password] ******************************************************************************************************************
+2024-12-01 00:01:42,421 p=17110 u=nw_automation n=ansible | Loading collection ansible.netcommon from /usr/lib/python3/dist-packages/ansible_collections/ansible/netcommon
+2024-12-01 00:01:42,439 p=17110 u=nw_automation n=ansible | Loading collection ansible.utils from /usr/lib/python3/dist-packages/ansible_collections/ansible/utils
+2024-12-01 00:01:42,457 p=17110 u=nw_automation n=ansible | redirecting (type: become) ansible.builtin.enable to ansible.netcommon.enable
+2024-12-01 00:01:42,463 p=17110 u=nw_automation n=ansible | <192.168.29.201> Using network group action cisco.ios.ios for cisco.ios.ios_config
+2024-12-01 00:01:42,471 p=17110 u=nw_automation n=ansible | <192.168.29.201> attempting to start connection
+2024-12-01 00:01:42,472 p=17110 u=nw_automation n=ansible | <192.168.29.201> using connection plugin ansible.netcommon.network_cli
+2024-12-01 00:01:42,472 p=17110 u=nw_automation n=ansible | Found ansible-connection at path /usr/bin/ansible-connection
+2024-12-01 00:01:42,840 p=17115 u=nw_automation n=ansible | Loading collection ansible.builtin from 
+2024-12-01 00:01:42,877 p=17120 u=nw_automation n=ansible | Loading collection ansible.netcommon from /usr/lib/python3/dist-packages/ansible_collections/ansible/netcommon
+2024-12-01 00:01:42,894 p=17120 u=nw_automation n=ansible | Loading collection ansible.utils from /usr/lib/python3/dist-packages/ansible_collections/ansible/utils
+2024-12-01 00:01:42,904 p=17120 u=nw_automation n=ansible | Loading collection cisco.ios from /usr/lib/python3/dist-packages/ansible_collections/cisco/ios
+2024-12-01 00:01:42,980 p=17110 u=nw_automation n=ansible | <192.168.29.201> local domain socket does not exist, starting it
+2024-12-01 00:01:42,980 p=17110 u=nw_automation n=ansible | <192.168.29.201> control socket path is /home/nw_automation/.ansible/pc/4178b40f73
+2024-12-01 00:01:42,980 p=17110 u=nw_automation n=ansible | <192.168.29.201> Loading collection ansible.builtin from 
+2024-12-01 00:01:42,980 p=17110 u=nw_automation n=ansible | <192.168.29.201> Loading collection ansible.netcommon from /usr/lib/python3/dist-packages/ansible_collections/ansible/netcommon
+2024-12-01 00:01:42,980 p=17110 u=nw_automation n=ansible | <192.168.29.201> Loading collection ansible.utils from /usr/lib/python3/dist-packages/ansible_collections/ansible/utils
+2024-12-01 00:01:42,981 p=17110 u=nw_automation n=ansible | <192.168.29.201> Loading collection cisco.ios from /usr/lib/python3/dist-packages/ansible_collections/cisco/ios
+2024-12-01 00:01:42,981 p=17110 u=nw_automation n=ansible | <192.168.29.201> local domain socket listeners started successfully
+2024-12-01 00:01:42,981 p=17110 u=nw_automation n=ansible | <192.168.29.201> loaded cliconf plugin ansible_collections.cisco.ios.plugins.cliconf.ios from path /usr/lib/python3/dist-packages/ansible_collections/cisco/ios/plugins/cliconf/ios.py for network_os cisco.ios.ios
+2024-12-01 00:01:42,981 p=17110 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 00:01:42,981 p=17110 u=nw_automation n=ansible | <192.168.29.201> ssh type is set to auto
+2024-12-01 00:01:42,981 p=17110 u=nw_automation n=ansible | <192.168.29.201> autodetecting ssh_type
+2024-12-01 00:01:42,981 p=17110 u=nw_automation n=ansible | <192.168.29.201> ssh type is now set to libssh
+2024-12-01 00:01:42,981 p=17110 u=nw_automation n=ansible | <192.168.29.201> Loading collection ansible.builtin from 
+
+2024-12-01 00:01:42,981 p=17110 u=nw_automation n=ansible | <192.168.29.201> local domain socket path is /home/nw_automation/.ansible/pc/4178b40f73
+2024-12-01 00:01:42,981 p=17110 u=nw_automation n=ansible | <192.168.29.201> ANSIBLE_NETWORK_IMPORT_MODULES: enabled
+2024-12-01 00:01:42,988 p=17110 u=nw_automation n=ansible | <192.168.29.201> ANSIBLE_NETWORK_IMPORT_MODULES: found cisco.ios.ios_config  at /usr/lib/python3/dist-packages/ansible_collections/cisco/ios/plugins/modules/ios_config.py
+2024-12-01 00:01:42,988 p=17110 u=nw_automation n=ansible | <192.168.29.201> ANSIBLE_NETWORK_IMPORT_MODULES: running cisco.ios.ios_config
+2024-12-01 00:01:42,988 p=17120 u=nw_automation n=ansible | <192.168.29.201> USING PYLIBSSH VERSION 1.2.2
+2024-12-01 00:01:42,989 p=17120 u=nw_automation n=ansible | <192.168.29.201> ESTABLISH LIBSSH CONNECTION FOR USER: nw_automation on PORT 22 TO 192.168.29.201
+2024-12-01 00:01:42,989 p=17120 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 00:01:43,423 p=17120 u=nw_automation n=ansible | ssh connection is OK: <pylibsshext.session.Session object at 0x73fcae499620>
+2024-12-01 00:01:45,091 p=17110 u=nw_automation n=ansible | <192.168.29.201> ANSIBLE_NETWORK_IMPORT_MODULES: complete
+2024-12-01 00:01:45,092 p=17110 u=nw_automation n=ansible | [WARNING]: To ensure idempotency and correct diff the input configuration lines should be similar to how they appear if present in the running configuration
+on device
+
+2024-12-01 00:01:45,093 p=17110 u=nw_automation n=ansible | changed: [CSR1] => {
+    "banners": {},
+    "changed": true,
+    "commands": [
+        "username admin_user_new privilege 15 secret secret123456"
+    ],
+    "invocation": {
+        "module_args": {
+            "after": null,
+            "backup": false,
+            "backup_options": null,
+            "before": null,
+            "defaults": false,
+            "diff_against": null,
+            "diff_ignore_lines": null,
+            "intended_config": null,
+            "lines": [
+                "username admin_user_new privilege 15 secret secret123456"
+            ],
+            "match": "line",
+            "multiline_delimiter": "@",
+            "parents": null,
+            "replace": "line",
+            "running_config": null,
+            "save_when": "never",
+            "src": null
+        }
+    },
+    "updates": [
+        "username admin_user_new privilege 15 secret secret123456"
+    ]
+}
+2024-12-01 00:01:45,094 p=17110 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 00:01:45,094 p=17110 u=nw_automation n=ansible | CSR1                       : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 00:01:45,194 p=17120 u=nw_automation n=ansible | shutdown complete
+2024-12-01 00:02:45,876 p=17144 u=nw_automation n=ansible | ansible-playbook [core 2.17.6]
+  config file = /home/nw_automation/ansible_course/14_Ansible_Best_Practices_and_Optimizations/ansible.cfg
+  configured module search path = ['/home/nw_automation/.ansible/plugins/modules', '/usr/share/ansible/plugins/modules']
+  ansible python module location = /usr/lib/python3/dist-packages/ansible
+  ansible collection location = /home/nw_automation/.ansible/collections:/usr/share/ansible/collections
+  executable location = /usr/bin/ansible-playbook
+  python version = 3.12.3 (main, Nov  6 2024, 18:32:19) [GCC 13.2.0] (/usr/bin/python3)
+  jinja version = 3.1.4
+  libyaml = True
+2024-12-01 00:02:45,877 p=17144 u=nw_automation n=ansible | Using /home/nw_automation/ansible_course/14_Ansible_Best_Practices_and_Optimizations/ansible.cfg as config file
+2024-12-01 00:02:45,877 p=17144 u=nw_automation n=ansible | setting up inventory plugins
+2024-12-01 00:02:45,969 p=17144 u=nw_automation n=ansible | Loading collection ansible.builtin from 
+2024-12-01 00:02:45,976 p=17144 u=nw_automation n=ansible | host_list declined parsing /home/nw_automation/ansible_course/14_Ansible_Best_Practices_and_Optimizations/inventory/inventory.yaml as it did not pass its verify_file() method
+2024-12-01 00:02:45,977 p=17144 u=nw_automation n=ansible | script declined parsing /home/nw_automation/ansible_course/14_Ansible_Best_Practices_and_Optimizations/inventory/inventory.yaml as it did not pass its verify_file() method
+2024-12-01 00:02:45,980 p=17144 u=nw_automation n=ansible | Parsed /home/nw_automation/ansible_course/14_Ansible_Best_Practices_and_Optimizations/inventory/inventory.yaml inventory source with yaml plugin
+2024-12-01 00:02:46,083 p=17144 u=nw_automation n=ansible | Loading collection cisco.ios from /usr/lib/python3/dist-packages/ansible_collections/cisco/ios
+2024-12-01 00:02:46,087 p=17144 u=nw_automation n=ansible | Loading callback plugin default of type stdout, v2.0 from /usr/lib/python3/dist-packages/ansible/plugins/callback/default.py
+2024-12-01 00:02:46,096 p=17144 u=nw_automation n=ansible | Skipping callback 'default', as we already have a stdout callback.
+2024-12-01 00:02:46,096 p=17144 u=nw_automation n=ansible | Skipping callback 'minimal', as we already have a stdout callback.
+2024-12-01 00:02:46,096 p=17144 u=nw_automation n=ansible | Skipping callback 'oneline', as we already have a stdout callback.
+2024-12-01 00:02:46,096 p=17144 u=nw_automation n=ansible | PLAYBOOK: 06_log_path_no_log_demo.yaml ************************************************************************************************************************
+2024-12-01 00:02:46,096 p=17144 u=nw_automation n=ansible | 1 plays in playbooks/06_log_path_no_log_demo.yaml
+2024-12-01 00:02:58,325 p=17144 u=nw_automation n=ansible | PLAY [Demo on no_log and log_path] ****************************************************************************************************************************
+2024-12-01 00:02:58,353 p=17144 u=nw_automation n=ansible | TASK [Configure local username and password] ******************************************************************************************************************
+2024-12-01 00:02:58,367 p=17144 u=nw_automation n=ansible | Loading collection ansible.netcommon from /usr/lib/python3/dist-packages/ansible_collections/ansible/netcommon
+2024-12-01 00:02:58,387 p=17144 u=nw_automation n=ansible | Loading collection ansible.utils from /usr/lib/python3/dist-packages/ansible_collections/ansible/utils
+2024-12-01 00:02:58,408 p=17144 u=nw_automation n=ansible | redirecting (type: become) ansible.builtin.enable to ansible.netcommon.enable
+2024-12-01 00:02:58,421 p=17144 u=nw_automation n=ansible | <192.168.29.201> Using network group action cisco.ios.ios for cisco.ios.ios_config
+2024-12-01 00:02:58,426 p=17144 u=nw_automation n=ansible | <192.168.29.201> attempting to start connection
+2024-12-01 00:02:58,426 p=17144 u=nw_automation n=ansible | <192.168.29.201> using connection plugin ansible.netcommon.network_cli
+2024-12-01 00:02:58,427 p=17144 u=nw_automation n=ansible | Found ansible-connection at path /usr/bin/ansible-connection
+2024-12-01 00:02:58,752 p=17149 u=nw_automation n=ansible | Loading collection ansible.builtin from 
+2024-12-01 00:02:58,789 p=17154 u=nw_automation n=ansible | Loading collection ansible.netcommon from /usr/lib/python3/dist-packages/ansible_collections/ansible/netcommon
+2024-12-01 00:02:58,805 p=17154 u=nw_automation n=ansible | Loading collection ansible.utils from /usr/lib/python3/dist-packages/ansible_collections/ansible/utils
+2024-12-01 00:02:58,814 p=17154 u=nw_automation n=ansible | Loading collection cisco.ios from /usr/lib/python3/dist-packages/ansible_collections/cisco/ios
+2024-12-01 00:02:58,889 p=17144 u=nw_automation n=ansible | <192.168.29.201> local domain socket does not exist, starting it
+2024-12-01 00:02:58,890 p=17144 u=nw_automation n=ansible | <192.168.29.201> control socket path is /home/nw_automation/.ansible/pc/b9b084b591
+2024-12-01 00:02:58,890 p=17144 u=nw_automation n=ansible | <192.168.29.201> Loading collection ansible.builtin from 
+2024-12-01 00:02:58,890 p=17144 u=nw_automation n=ansible | <192.168.29.201> Loading collection ansible.netcommon from /usr/lib/python3/dist-packages/ansible_collections/ansible/netcommon
+2024-12-01 00:02:58,890 p=17144 u=nw_automation n=ansible | <192.168.29.201> Loading collection ansible.utils from /usr/lib/python3/dist-packages/ansible_collections/ansible/utils
+2024-12-01 00:02:58,890 p=17144 u=nw_automation n=ansible | <192.168.29.201> Loading collection cisco.ios from /usr/lib/python3/dist-packages/ansible_collections/cisco/ios
+2024-12-01 00:02:58,890 p=17144 u=nw_automation n=ansible | <192.168.29.201> local domain socket listeners started successfully
+2024-12-01 00:02:58,890 p=17144 u=nw_automation n=ansible | <192.168.29.201> loaded cliconf plugin ansible_collections.cisco.ios.plugins.cliconf.ios from path /usr/lib/python3/dist-packages/ansible_collections/cisco/ios/plugins/cliconf/ios.py for network_os cisco.ios.ios
+2024-12-01 00:02:58,890 p=17144 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 00:02:58,890 p=17144 u=nw_automation n=ansible | <192.168.29.201> ssh type is set to auto
+2024-12-01 00:02:58,890 p=17144 u=nw_automation n=ansible | <192.168.29.201> autodetecting ssh_type
+2024-12-01 00:02:58,891 p=17144 u=nw_automation n=ansible | <192.168.29.201> ssh type is now set to libssh
+2024-12-01 00:02:58,891 p=17144 u=nw_automation n=ansible | <192.168.29.201> Loading collection ansible.builtin from 
+
+2024-12-01 00:02:58,891 p=17144 u=nw_automation n=ansible | <192.168.29.201> local domain socket path is /home/nw_automation/.ansible/pc/b9b084b591
+2024-12-01 00:02:58,891 p=17144 u=nw_automation n=ansible | <192.168.29.201> ANSIBLE_NETWORK_IMPORT_MODULES: enabled
+2024-12-01 00:02:58,894 p=17144 u=nw_automation n=ansible | <192.168.29.201> ANSIBLE_NETWORK_IMPORT_MODULES: found cisco.ios.ios_config  at /usr/lib/python3/dist-packages/ansible_collections/cisco/ios/plugins/modules/ios_config.py
+2024-12-01 00:02:58,894 p=17144 u=nw_automation n=ansible | <192.168.29.201> ANSIBLE_NETWORK_IMPORT_MODULES: running cisco.ios.ios_config
+2024-12-01 00:02:58,895 p=17154 u=nw_automation n=ansible | <192.168.29.201> USING PYLIBSSH VERSION 1.2.2
+2024-12-01 00:02:58,895 p=17154 u=nw_automation n=ansible | <192.168.29.201> ESTABLISH LIBSSH CONNECTION FOR USER: nw_automation on PORT 22 TO 192.168.29.201
+2024-12-01 00:02:58,895 p=17154 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 00:02:59,341 p=17154 u=nw_automation n=ansible | ssh connection is OK: <pylibsshext.session.Session object at 0x7c3d7dfc8b80>
+2024-12-01 00:03:01,168 p=17144 u=nw_automation n=ansible | <192.168.29.201> ANSIBLE_NETWORK_IMPORT_MODULES: complete
+2024-12-01 00:03:01,169 p=17144 u=nw_automation n=ansible | changed: [CSR1] => {
+    "censored": "the output has been hidden due to the fact that 'no_log: true' was specified for this result",
+    "changed": true
+}
+2024-12-01 00:03:01,171 p=17144 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 00:03:01,172 p=17144 u=nw_automation n=ansible | CSR1                       : ok=1    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 00:03:01,272 p=17154 u=nw_automation n=ansible | shutdown complete
+2024-12-01 00:28:25,340 p=17271 u=nw_automation n=ansible | PLAY [Demo on ignore_errors] **********************************************************************************************************************************
+2024-12-01 00:28:25,367 p=17271 u=nw_automation n=ansible | TASK [Display interface ip] ***********************************************************************************************************************************
+2024-12-01 00:28:25,933 p=17271 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 00:28:25,933 p=17271 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 00:28:25,939 p=17288 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 00:28:25,940 p=17287 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 00:28:27,503 p=17271 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 00:28:27,524 p=17271 u=nw_automation n=ansible | ok: [VIOS1]
+2024-12-01 00:28:27,527 p=17271 u=nw_automation n=ansible | TASK [Display interface status] *******************************************************************************************************************************
+2024-12-01 00:28:28,105 p=17271 u=nw_automation n=ansible | fatal: [CSR1]: FAILED! => {"changed": false, "msg": "show interface status\r\nshow interface status\r\n                   ^\r\n% Invalid input detected at '^' marker.\r\n\r\nCSR1#"}
+2024-12-01 00:28:28,235 p=17271 u=nw_automation n=ansible | ok: [VIOS1]
+2024-12-01 00:28:28,236 p=17271 u=nw_automation n=ansible | TASK [Display version] ****************************************************************************************************************************************
+2024-12-01 00:28:28,877 p=17271 u=nw_automation n=ansible | ok: [VIOS1]
+2024-12-01 00:28:28,880 p=17271 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 00:28:28,880 p=17271 u=nw_automation n=ansible | CSR1                       : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-12-01 00:28:28,880 p=17271 u=nw_automation n=ansible | VIOS1                      : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 00:28:28,979 p=17288 u=nw_automation n=ansible | shutdown complete
+2024-12-01 00:28:28,980 p=17287 u=nw_automation n=ansible | shutdown complete
+2024-12-01 00:29:25,222 p=17310 u=nw_automation n=ansible | PLAY [Demo on ignore_errors] **********************************************************************************************************************************
+2024-12-01 00:29:25,249 p=17310 u=nw_automation n=ansible | TASK [Display interface ip] ***********************************************************************************************************************************
+2024-12-01 00:29:25,836 p=17310 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 00:29:25,840 p=17310 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 00:29:25,846 p=17327 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 00:29:25,849 p=17328 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 00:29:27,369 p=17310 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 00:29:27,455 p=17310 u=nw_automation n=ansible | ok: [VIOS1]
+2024-12-01 00:29:27,456 p=17310 u=nw_automation n=ansible | TASK [Display interface status] *******************************************************************************************************************************
+2024-12-01 00:29:28,029 p=17310 u=nw_automation n=ansible | fatal: [CSR1]: FAILED! => {"changed": false, "msg": "show interface status\r\nshow interface status\r\n                   ^\r\n% Invalid input detected at '^' marker.\r\n\r\nCSR1#"}
+2024-12-01 00:29:28,029 p=17310 u=nw_automation n=ansible | ...ignoring
+2024-12-01 00:29:28,157 p=17310 u=nw_automation n=ansible | ok: [VIOS1]
+2024-12-01 00:29:28,159 p=17310 u=nw_automation n=ansible | TASK [Display version] ****************************************************************************************************************************************
+2024-12-01 00:29:28,813 p=17310 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 00:29:28,845 p=17310 u=nw_automation n=ansible | ok: [VIOS1]
+2024-12-01 00:29:28,851 p=17310 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 00:29:28,851 p=17310 u=nw_automation n=ansible | CSR1                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=1   
+2024-12-01 00:29:28,851 p=17310 u=nw_automation n=ansible | VIOS1                      : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 00:29:28,948 p=17328 u=nw_automation n=ansible | shutdown complete
+2024-12-01 00:29:28,956 p=17327 u=nw_automation n=ansible | shutdown complete
+2024-12-01 09:41:16,931 p=4374 u=nw_automation n=ansible | PLAY [Demo on failed_when and changed_when] *******************************************************************************************************************
+2024-12-01 09:41:16,948 p=4374 u=nw_automation n=ansible | TASK [Gather all legacy facts] ********************************************************************************************************************************
+2024-12-01 09:41:17,730 p=4374 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 09:41:18,126 p=4385 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 09:41:20,437 p=4374 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 09:41:20,441 p=4374 u=nw_automation n=ansible | TASK [Fetch available memory] *********************************************************************************************************************************
+2024-12-01 09:41:20,496 p=4374 u=nw_automation n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ (avl_mem | int) < 6000000 }}
+
+2024-12-01 09:41:20,506 p=4374 u=nw_automation n=ansible | fatal: [CSR1]: FAILED! => {"ansible_facts": {"avl_mem": "5302600.0"}, "changed": false, "failed_when_result": true}
+2024-12-01 09:41:20,508 p=4374 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 09:41:20,508 p=4374 u=nw_automation n=ansible | CSR1                       : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-12-01 09:41:20,608 p=4385 u=nw_automation n=ansible | shutdown complete
+2024-12-01 09:43:28,912 p=4444 u=nw_automation n=ansible |  [ERROR]: User interrupted execution
+
+2024-12-01 09:43:46,837 p=4473 u=nw_automation n=ansible | PLAY [Demo on failed_when and changed_when] *******************************************************************************************************************
+2024-12-01 09:43:46,843 p=4473 u=nw_automation n=ansible | TASK [Gather all legacy facts] ********************************************************************************************************************************
+2024-12-01 09:43:47,437 p=4473 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 09:43:47,732 p=4484 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 09:43:49,970 p=4473 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 09:43:49,972 p=4473 u=nw_automation n=ansible | TASK [Fetch available memory] *********************************************************************************************************************************
+2024-12-01 09:43:50,069 p=4473 u=nw_automation n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ (avl_mem | int) < 6000000 }}
+
+2024-12-01 09:43:50,081 p=4473 u=nw_automation n=ansible | fatal: [CSR1]: FAILED! => {"ansible_facts": {"avl_mem": "5302580.0"}, "changed": false, "failed_when_result": true}
+2024-12-01 09:43:50,084 p=4473 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 09:43:50,084 p=4473 u=nw_automation n=ansible | CSR1                       : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-12-01 09:43:50,189 p=4484 u=nw_automation n=ansible | shutdown complete
+2024-12-01 09:46:09,032 p=4550 u=nw_automation n=ansible | PLAY [Demo on failed_when and changed_when] *******************************************************************************************************************
+2024-12-01 09:46:09,041 p=4550 u=nw_automation n=ansible | TASK [Gather all legacy facts] ********************************************************************************************************************************
+2024-12-01 09:46:10,163 p=4550 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 09:46:10,655 p=4560 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 09:46:13,043 p=4550 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 09:46:13,046 p=4550 u=nw_automation n=ansible | TASK [Fetch available memory] *********************************************************************************************************************************
+2024-12-01 09:46:13,182 p=4550 u=nw_automation n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ (avl_mem | int) < 6000000 }}
+
+2024-12-01 09:46:13,196 p=4550 u=nw_automation n=ansible | fatal: [CSR1]: FAILED! => {"ansible_facts": {"avl_mem": "5302580.0"}, "changed": false, "failed_when_result": true}
+2024-12-01 09:46:13,198 p=4550 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 09:46:13,198 p=4550 u=nw_automation n=ansible | CSR1                       : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-12-01 09:46:13,298 p=4560 u=nw_automation n=ansible | shutdown complete
+2024-12-01 09:46:46,158 p=4577 u=nw_automation n=ansible | PLAY [Demo on failed_when and changed_when] *******************************************************************************************************************
+2024-12-01 09:46:46,170 p=4577 u=nw_automation n=ansible | TASK [Gather all legacy facts] ********************************************************************************************************************************
+2024-12-01 09:46:47,110 p=4577 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 09:46:47,631 p=4587 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 09:46:50,139 p=4577 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 09:46:50,145 p=4577 u=nw_automation n=ansible | TASK [Fetch available memory] *********************************************************************************************************************************
+2024-12-01 09:46:50,263 p=4577 u=nw_automation n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ (avl_mem | int) < 5000000 }}
+
+2024-12-01 09:46:50,273 p=4577 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 09:46:50,276 p=4577 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 09:46:50,277 p=4577 u=nw_automation n=ansible | CSR1                       : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 09:46:50,377 p=4587 u=nw_automation n=ansible | shutdown complete
+2024-12-01 09:51:14,563 p=5568 u=nw_automation n=ansible | PLAY [Demo on failed_when and changed_when] *******************************************************************************************************************
+2024-12-01 09:51:14,571 p=5568 u=nw_automation n=ansible | TASK [Gather all legacy facts] ********************************************************************************************************************************
+2024-12-01 09:51:15,193 p=5568 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 09:51:15,470 p=5578 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 09:51:17,691 p=5568 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 09:51:17,693 p=5568 u=nw_automation n=ansible | TASK [Fetch available memory] *********************************************************************************************************************************
+2024-12-01 09:51:17,751 p=5568 u=nw_automation n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ (avl_mem | int) < 5000000 }}
+
+2024-12-01 09:51:17,758 p=5568 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 09:51:17,759 p=5568 u=nw_automation n=ansible | TASK [Check interface status] *********************************************************************************************************************************
+2024-12-01 09:51:18,412 p=5568 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 09:51:18,413 p=5568 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 09:51:18,414 p=5568 u=nw_automation n=ansible | CSR1                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 09:51:18,514 p=5578 u=nw_automation n=ansible | shutdown complete
+2024-12-01 09:52:02,945 p=5596 u=nw_automation n=ansible | PLAY [Demo on failed_when and changed_when] *******************************************************************************************************************
+2024-12-01 09:52:02,952 p=5596 u=nw_automation n=ansible | TASK [Gather all legacy facts] ********************************************************************************************************************************
+2024-12-01 09:52:03,501 p=5596 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 09:52:03,724 p=5607 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 09:52:05,939 p=5596 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 09:52:05,942 p=5596 u=nw_automation n=ansible | TASK [Fetch available memory] *********************************************************************************************************************************
+2024-12-01 09:52:06,011 p=5596 u=nw_automation n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ (avl_mem | int) < 5000000 }}
+
+2024-12-01 09:52:06,019 p=5596 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 09:52:06,022 p=5596 u=nw_automation n=ansible | TASK [Check interface status] *********************************************************************************************************************************
+2024-12-01 09:52:06,695 p=5596 u=nw_automation n=ansible | [WARNING]: conditional statements should not include jinja2 templating delimiters such as {{ }} or {% %}. Found: {{ 'up' not in output.stdout[0] }}
+
+2024-12-01 09:52:06,698 p=5596 u=nw_automation n=ansible | changed: [CSR1]
+2024-12-01 09:52:06,701 p=5596 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 09:52:06,702 p=5596 u=nw_automation n=ansible | CSR1                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 09:52:06,801 p=5607 u=nw_automation n=ansible | shutdown complete
+2024-12-01 12:37:29,004 p=6076 u=nw_automation n=ansible | {"/usr/lib/python3/dist-packages/ansible_collections": {"amazon.aws": {"version": "8.2.1"}, "ansible.netcommon": {"version": "6.1.3"}, "ansible.posix": {"version": "1.6.2"}, "ansible.utils": {"version": "4.1.0"}, "ansible.windows": {"version": "2.5.0"}, "arista.eos": {"version": "9.0.0"}, "awx.awx": {"version": "24.6.1"}, "azure.azcollection": {"version": "2.7.0"}, "check_point.mgmt": {"version": "5.2.3"}, "chocolatey.chocolatey": {"version": "1.5.3"}, "cisco.aci": {"version": "2.10.1"}, "cisco.asa": {"version": "5.0.1"}, "cisco.dnac": {"version": "6.22.0"}, "cisco.intersight": {"version": "2.0.20"}, "cisco.ios": {"version": "8.0.0"}, "cisco.iosxr": {"version": "9.0.0"}, "cisco.ise": {"version": "2.9.5"}, "cisco.meraki": {"version": "2.18.3"}, "cisco.mso": {"version": "2.9.0"}, "cisco.nxos": {"version": "8.1.0"}, "cisco.ucs": {"version": "1.14.0"}, "cloud.common": {"version": "3.0.0"}, "cloudscale_ch.cloud": {"version": "2.4.0"}, "community.aws": {"version": "8.0.0"}, "community.ciscosmb": {"version": "1.0.9"}, "community.crypto": {"version": "2.22.3"}, "community.digitalocean": {"version": "1.27.0"}, "community.dns": {"version": "3.0.6"}, "community.docker": {"version": "3.13.1"}, "community.general": {"version": "9.5.1"}, "community.grafana": {"version": "1.9.1"}, "community.hashi_vault": {"version": "6.2.0"}, "community.hrobot": {"version": "2.0.2"}, "community.library_inventory_filtering_v1": {"version": "1.0.2"}, "community.libvirt": {"version": "1.3.0"}, "community.mongodb": {"version": "1.7.8"}, "community.mysql": {"version": "3.10.3"}, "community.network": {"version": "5.1.0"}, "community.okd": {"version": "3.0.1"}, "community.postgresql": {"version": "3.7.0"}, "community.proxysql": {"version": "1.6.0"}, "community.rabbitmq": {"version": "1.3.0"}, "community.routeros": {"version": "2.20.0"}, "community.sap_libs": {"version": "1.4.2"}, "community.sops": {"version": "1.9.1"}, "community.vmware": {"version": "4.8.0"}, "community.windows": {"version": "2.3.0"}, "community.zabbix": {"version": "2.5.1"}, "containers.podman": {"version": "1.16.2"}, "cyberark.conjur": {"version": "1.3.1"}, "cyberark.pas": {"version": "1.0.27"}, "dellemc.enterprise_sonic": {"version": "2.5.1"}, "dellemc.openmanage": {"version": "9.8.0"}, "dellemc.powerflex": {"version": "2.5.0"}, "dellemc.unity": {"version": "2.0.0"}, "f5networks.f5_modules": {"version": "1.32.1"}, "fortinet.fortimanager": {"version": "2.7.0"}, "fortinet.fortios": {"version": "2.3.8"}, "frr.frr": {"version": "2.0.2"}, "google.cloud": {"version": "1.4.1"}, "grafana.grafana": {"version": "5.6.0"}, "hetzner.hcloud": {"version": "3.1.1"}, "ibm.qradar": {"version": "3.0.0"}, "ibm.spectrum_virtualize": {"version": "2.0.0"}, "ibm.storage_virtualize": {"version": "2.5.0"}, "ieisystem.inmanage": {"version": "2.0.0"}, "infinidat.infinibox": {"version": "1.4.5"}, "infoblox.nios_modules": {"version": "1.7.0"}, "inspur.ispim": {"version": "2.2.3"}, "inspur.sm": {"version": "2.3.0"}, "junipernetworks.junos": {"version": "8.0.0"}, "kaytus.ksmanage": {"version": "1.2.2"}, "kubernetes.core": {"version": "3.2.0"}, "kubevirt.core": {"version": "1.5.0"}, "lowlydba.sqlserver": {"version": "2.3.4"}, "microsoft.ad": {"version": "1.7.1"}, "netapp.cloudmanager": {"version": "21.24.0"}, "netapp.ontap": {"version": "22.12.0"}, "netapp.storagegrid": {"version": "21.13.0"}, "netapp_eseries.santricity": {"version": "1.4.1"}, "netbox.netbox": {"version": "3.20.0"}, "ngine_io.cloudstack": {"version": "2.5.0"}, "ngine_io.exoscale": {"version": "1.1.0"}, "openstack.cloud": {"version": "2.2.0"}, "openvswitch.openvswitch": {"version": "2.1.1"}, "ovirt.ovirt": {"version": "3.2.0"}, "purestorage.flasharray": {"version": "1.31.1"}, "purestorage.flashblade": {"version": "1.19.1"}, "sensu.sensu_go": {"version": "1.14.0"}, "splunk.es": {"version": "3.0.0"}, "t_systems_mms.icinga_director": {"version": "2.0.1"}, "telekom_mms.icinga_director": {"version": "2.2.0"}, "theforeman.foreman": {"version": "4.2.0"}, "vmware.vmware": {"version": "1.6.0"}, "vmware.vmware_rest": {"version": "3.2.0"}, "vultr.cloud": {"version": "1.13.0"}, "vyos.vyos": {"version": "4.1.0"}, "wti.remote": {"version": "1.0.10"}}}
+2024-12-01 12:37:29,788 p=6092 u=nw_automation n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: CSR1
+
+2024-12-01 12:37:29,789 p=6092 u=nw_automation n=ansible | playbook: playbooks/Ansiblelindemo.yaml
+2024-12-01 12:37:30,495 p=6095 u=nw_automation n=ansible | {
+    "ansible.builtin.runas": "Run As user",
+    "ansible.builtin.su": "Substitute User",
+    "ansible.builtin.sudo": "Substitute User DO",
+    "ansible.netcommon.enable": "Switch to elevated permissions on a network device",
+    "community.general.doas": "Do As user",
+    "community.general.dzdo": "Centrify's Direct Authorize",
+    "community.general.ksu": "Kerberos substitute user",
+    "community.general.machinectl": "Systemd's machinectl privilege escalation",
+    "community.general.pbrun": "PowerBroker run",
+    "community.general.pfexec": "profile based execution",
+    "community.general.pmrun": "Privilege Manager run",
+    "community.general.run0": "Systemd's run0",
+    "community.general.sesu": "CA Privileged Access Manager",
+    "community.general.sudosu": "Run tasks using sudo su -",
+    "containers.podman.podman_unshare": "Run tasks using podman unshare"
+}
+2024-12-01 12:37:30,557 p=6068 u=nw_automation n=ansiblelint | Listing 8 violation(s) that are fatal
+2024-12-01 12:39:29,806 p=6172 u=nw_automation n=ansible | {"/usr/lib/python3/dist-packages/ansible_collections": {"amazon.aws": {"version": "8.2.1"}, "ansible.netcommon": {"version": "6.1.3"}, "ansible.posix": {"version": "1.6.2"}, "ansible.utils": {"version": "4.1.0"}, "ansible.windows": {"version": "2.5.0"}, "arista.eos": {"version": "9.0.0"}, "awx.awx": {"version": "24.6.1"}, "azure.azcollection": {"version": "2.7.0"}, "check_point.mgmt": {"version": "5.2.3"}, "chocolatey.chocolatey": {"version": "1.5.3"}, "cisco.aci": {"version": "2.10.1"}, "cisco.asa": {"version": "5.0.1"}, "cisco.dnac": {"version": "6.22.0"}, "cisco.intersight": {"version": "2.0.20"}, "cisco.ios": {"version": "8.0.0"}, "cisco.iosxr": {"version": "9.0.0"}, "cisco.ise": {"version": "2.9.5"}, "cisco.meraki": {"version": "2.18.3"}, "cisco.mso": {"version": "2.9.0"}, "cisco.nxos": {"version": "8.1.0"}, "cisco.ucs": {"version": "1.14.0"}, "cloud.common": {"version": "3.0.0"}, "cloudscale_ch.cloud": {"version": "2.4.0"}, "community.aws": {"version": "8.0.0"}, "community.ciscosmb": {"version": "1.0.9"}, "community.crypto": {"version": "2.22.3"}, "community.digitalocean": {"version": "1.27.0"}, "community.dns": {"version": "3.0.6"}, "community.docker": {"version": "3.13.1"}, "community.general": {"version": "9.5.1"}, "community.grafana": {"version": "1.9.1"}, "community.hashi_vault": {"version": "6.2.0"}, "community.hrobot": {"version": "2.0.2"}, "community.library_inventory_filtering_v1": {"version": "1.0.2"}, "community.libvirt": {"version": "1.3.0"}, "community.mongodb": {"version": "1.7.8"}, "community.mysql": {"version": "3.10.3"}, "community.network": {"version": "5.1.0"}, "community.okd": {"version": "3.0.1"}, "community.postgresql": {"version": "3.7.0"}, "community.proxysql": {"version": "1.6.0"}, "community.rabbitmq": {"version": "1.3.0"}, "community.routeros": {"version": "2.20.0"}, "community.sap_libs": {"version": "1.4.2"}, "community.sops": {"version": "1.9.1"}, "community.vmware": {"version": "4.8.0"}, "community.windows": {"version": "2.3.0"}, "community.zabbix": {"version": "2.5.1"}, "containers.podman": {"version": "1.16.2"}, "cyberark.conjur": {"version": "1.3.1"}, "cyberark.pas": {"version": "1.0.27"}, "dellemc.enterprise_sonic": {"version": "2.5.1"}, "dellemc.openmanage": {"version": "9.8.0"}, "dellemc.powerflex": {"version": "2.5.0"}, "dellemc.unity": {"version": "2.0.0"}, "f5networks.f5_modules": {"version": "1.32.1"}, "fortinet.fortimanager": {"version": "2.7.0"}, "fortinet.fortios": {"version": "2.3.8"}, "frr.frr": {"version": "2.0.2"}, "google.cloud": {"version": "1.4.1"}, "grafana.grafana": {"version": "5.6.0"}, "hetzner.hcloud": {"version": "3.1.1"}, "ibm.qradar": {"version": "3.0.0"}, "ibm.spectrum_virtualize": {"version": "2.0.0"}, "ibm.storage_virtualize": {"version": "2.5.0"}, "ieisystem.inmanage": {"version": "2.0.0"}, "infinidat.infinibox": {"version": "1.4.5"}, "infoblox.nios_modules": {"version": "1.7.0"}, "inspur.ispim": {"version": "2.2.3"}, "inspur.sm": {"version": "2.3.0"}, "junipernetworks.junos": {"version": "8.0.0"}, "kaytus.ksmanage": {"version": "1.2.2"}, "kubernetes.core": {"version": "3.2.0"}, "kubevirt.core": {"version": "1.5.0"}, "lowlydba.sqlserver": {"version": "2.3.4"}, "microsoft.ad": {"version": "1.7.1"}, "netapp.cloudmanager": {"version": "21.24.0"}, "netapp.ontap": {"version": "22.12.0"}, "netapp.storagegrid": {"version": "21.13.0"}, "netapp_eseries.santricity": {"version": "1.4.1"}, "netbox.netbox": {"version": "3.20.0"}, "ngine_io.cloudstack": {"version": "2.5.0"}, "ngine_io.exoscale": {"version": "1.1.0"}, "openstack.cloud": {"version": "2.2.0"}, "openvswitch.openvswitch": {"version": "2.1.1"}, "ovirt.ovirt": {"version": "3.2.0"}, "purestorage.flasharray": {"version": "1.31.1"}, "purestorage.flashblade": {"version": "1.19.1"}, "sensu.sensu_go": {"version": "1.14.0"}, "splunk.es": {"version": "3.0.0"}, "t_systems_mms.icinga_director": {"version": "2.0.1"}, "telekom_mms.icinga_director": {"version": "2.2.0"}, "theforeman.foreman": {"version": "4.2.0"}, "vmware.vmware": {"version": "1.6.0"}, "vmware.vmware_rest": {"version": "3.2.0"}, "vultr.cloud": {"version": "1.13.0"}, "vyos.vyos": {"version": "4.1.0"}, "wti.remote": {"version": "1.0.10"}}}
+2024-12-01 12:39:30,660 p=6183 u=nw_automation n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: CSR1
+
+2024-12-01 12:39:30,661 p=6183 u=nw_automation n=ansible | playbook: playbooks/Ansiblelindemo.yaml
+2024-12-01 12:39:31,458 p=6186 u=nw_automation n=ansible | {
+    "ansible.builtin.runas": "Run As user",
+    "ansible.builtin.su": "Substitute User",
+    "ansible.builtin.sudo": "Substitute User DO",
+    "ansible.netcommon.enable": "Switch to elevated permissions on a network device",
+    "community.general.doas": "Do As user",
+    "community.general.dzdo": "Centrify's Direct Authorize",
+    "community.general.ksu": "Kerberos substitute user",
+    "community.general.machinectl": "Systemd's machinectl privilege escalation",
+    "community.general.pbrun": "PowerBroker run",
+    "community.general.pfexec": "profile based execution",
+    "community.general.pmrun": "Privilege Manager run",
+    "community.general.run0": "Systemd's run0",
+    "community.general.sesu": "CA Privileged Access Manager",
+    "community.general.sudosu": "Run tasks using sudo su -",
+    "containers.podman.podman_unshare": "Run tasks using podman unshare"
+}
+2024-12-01 12:40:14,250 p=6249 u=nw_automation n=ansible | {"/usr/lib/python3/dist-packages/ansible_collections": {"amazon.aws": {"version": "8.2.1"}, "ansible.netcommon": {"version": "6.1.3"}, "ansible.posix": {"version": "1.6.2"}, "ansible.utils": {"version": "4.1.0"}, "ansible.windows": {"version": "2.5.0"}, "arista.eos": {"version": "9.0.0"}, "awx.awx": {"version": "24.6.1"}, "azure.azcollection": {"version": "2.7.0"}, "check_point.mgmt": {"version": "5.2.3"}, "chocolatey.chocolatey": {"version": "1.5.3"}, "cisco.aci": {"version": "2.10.1"}, "cisco.asa": {"version": "5.0.1"}, "cisco.dnac": {"version": "6.22.0"}, "cisco.intersight": {"version": "2.0.20"}, "cisco.ios": {"version": "8.0.0"}, "cisco.iosxr": {"version": "9.0.0"}, "cisco.ise": {"version": "2.9.5"}, "cisco.meraki": {"version": "2.18.3"}, "cisco.mso": {"version": "2.9.0"}, "cisco.nxos": {"version": "8.1.0"}, "cisco.ucs": {"version": "1.14.0"}, "cloud.common": {"version": "3.0.0"}, "cloudscale_ch.cloud": {"version": "2.4.0"}, "community.aws": {"version": "8.0.0"}, "community.ciscosmb": {"version": "1.0.9"}, "community.crypto": {"version": "2.22.3"}, "community.digitalocean": {"version": "1.27.0"}, "community.dns": {"version": "3.0.6"}, "community.docker": {"version": "3.13.1"}, "community.general": {"version": "9.5.1"}, "community.grafana": {"version": "1.9.1"}, "community.hashi_vault": {"version": "6.2.0"}, "community.hrobot": {"version": "2.0.2"}, "community.library_inventory_filtering_v1": {"version": "1.0.2"}, "community.libvirt": {"version": "1.3.0"}, "community.mongodb": {"version": "1.7.8"}, "community.mysql": {"version": "3.10.3"}, "community.network": {"version": "5.1.0"}, "community.okd": {"version": "3.0.1"}, "community.postgresql": {"version": "3.7.0"}, "community.proxysql": {"version": "1.6.0"}, "community.rabbitmq": {"version": "1.3.0"}, "community.routeros": {"version": "2.20.0"}, "community.sap_libs": {"version": "1.4.2"}, "community.sops": {"version": "1.9.1"}, "community.vmware": {"version": "4.8.0"}, "community.windows": {"version": "2.3.0"}, "community.zabbix": {"version": "2.5.1"}, "containers.podman": {"version": "1.16.2"}, "cyberark.conjur": {"version": "1.3.1"}, "cyberark.pas": {"version": "1.0.27"}, "dellemc.enterprise_sonic": {"version": "2.5.1"}, "dellemc.openmanage": {"version": "9.8.0"}, "dellemc.powerflex": {"version": "2.5.0"}, "dellemc.unity": {"version": "2.0.0"}, "f5networks.f5_modules": {"version": "1.32.1"}, "fortinet.fortimanager": {"version": "2.7.0"}, "fortinet.fortios": {"version": "2.3.8"}, "frr.frr": {"version": "2.0.2"}, "google.cloud": {"version": "1.4.1"}, "grafana.grafana": {"version": "5.6.0"}, "hetzner.hcloud": {"version": "3.1.1"}, "ibm.qradar": {"version": "3.0.0"}, "ibm.spectrum_virtualize": {"version": "2.0.0"}, "ibm.storage_virtualize": {"version": "2.5.0"}, "ieisystem.inmanage": {"version": "2.0.0"}, "infinidat.infinibox": {"version": "1.4.5"}, "infoblox.nios_modules": {"version": "1.7.0"}, "inspur.ispim": {"version": "2.2.3"}, "inspur.sm": {"version": "2.3.0"}, "junipernetworks.junos": {"version": "8.0.0"}, "kaytus.ksmanage": {"version": "1.2.2"}, "kubernetes.core": {"version": "3.2.0"}, "kubevirt.core": {"version": "1.5.0"}, "lowlydba.sqlserver": {"version": "2.3.4"}, "microsoft.ad": {"version": "1.7.1"}, "netapp.cloudmanager": {"version": "21.24.0"}, "netapp.ontap": {"version": "22.12.0"}, "netapp.storagegrid": {"version": "21.13.0"}, "netapp_eseries.santricity": {"version": "1.4.1"}, "netbox.netbox": {"version": "3.20.0"}, "ngine_io.cloudstack": {"version": "2.5.0"}, "ngine_io.exoscale": {"version": "1.1.0"}, "openstack.cloud": {"version": "2.2.0"}, "openvswitch.openvswitch": {"version": "2.1.1"}, "ovirt.ovirt": {"version": "3.2.0"}, "purestorage.flasharray": {"version": "1.31.1"}, "purestorage.flashblade": {"version": "1.19.1"}, "sensu.sensu_go": {"version": "1.14.0"}, "splunk.es": {"version": "3.0.0"}, "t_systems_mms.icinga_director": {"version": "2.0.1"}, "telekom_mms.icinga_director": {"version": "2.2.0"}, "theforeman.foreman": {"version": "4.2.0"}, "vmware.vmware": {"version": "1.6.0"}, "vmware.vmware_rest": {"version": "3.2.0"}, "vultr.cloud": {"version": "1.13.0"}, "vyos.vyos": {"version": "4.1.0"}, "wti.remote": {"version": "1.0.10"}}}
+2024-12-01 12:40:15,015 p=6260 u=nw_automation n=ansible | [WARNING]: Could not match supplied host pattern, ignoring: CSR1
+
+2024-12-01 12:40:15,015 p=6260 u=nw_automation n=ansible | playbook: playbooks/09_ansible_lint_demo.yaml
+2024-12-01 12:40:15,727 p=6263 u=nw_automation n=ansible | {
+    "ansible.builtin.runas": "Run As user",
+    "ansible.builtin.su": "Substitute User",
+    "ansible.builtin.sudo": "Substitute User DO",
+    "ansible.netcommon.enable": "Switch to elevated permissions on a network device",
+    "community.general.doas": "Do As user",
+    "community.general.dzdo": "Centrify's Direct Authorize",
+    "community.general.ksu": "Kerberos substitute user",
+    "community.general.machinectl": "Systemd's machinectl privilege escalation",
+    "community.general.pbrun": "PowerBroker run",
+    "community.general.pfexec": "profile based execution",
+    "community.general.pmrun": "Privilege Manager run",
+    "community.general.run0": "Systemd's run0",
+    "community.general.sesu": "CA Privileged Access Manager",
+    "community.general.sudosu": "Run tasks using sudo su -",
+    "containers.podman.podman_unshare": "Run tasks using podman unshare"
+}
+2024-12-01 13:58:39,624 p=7447 u=nw_automation n=ansible | Encryption successful
+2024-12-01 14:00:27,745 p=7493 u=nw_automation n=ansible | PLAY [Demo on Ansible Vault] **********************************************************************************************************************************
+2024-12-01 14:00:27,756 p=7493 u=nw_automation n=ansible | TASK [Run show command] ***************************************************************************************************************************************
+2024-12-01 14:00:27,769 p=7493 u=nw_automation n=ansible | fatal: [CSR1]: FAILED! => {"msg": "Attempting to decrypt but no vault secrets found"}
+2024-12-01 14:00:27,770 p=7493 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 14:00:27,770 p=7493 u=nw_automation n=ansible | CSR1                       : ok=0    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-12-01 14:01:12,268 p=7501 u=nw_automation n=ansible | PLAY [Demo on Ansible Vault] **********************************************************************************************************************************
+2024-12-01 14:01:12,279 p=7501 u=nw_automation n=ansible | TASK [Run show command] ***************************************************************************************************************************************
+2024-12-01 14:01:13,231 p=7501 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 14:01:13,240 p=7512 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 14:01:14,779 p=7501 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 14:01:14,782 p=7501 u=nw_automation n=ansible | TASK [Display variable] ***************************************************************************************************************************************
+2024-12-01 14:01:14,975 p=7501 u=nw_automation n=ansible | ok: [CSR1] => {
+    "output": {
+        "changed": false,
+        "failed": false,
+        "stdout": [
+            "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      \nGigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      \nGigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      \nGigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+        ],
+        "stdout_lines": [
+            [
+                "Interface              IP-Address      OK? Method Status                Protocol",
+                "GigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      ",
+                "GigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+            ]
+        ]
+    }
+}
+2024-12-01 14:01:14,978 p=7501 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 14:01:14,979 p=7501 u=nw_automation n=ansible | CSR1                       : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 14:01:15,079 p=7512 u=nw_automation n=ansible | shutdown complete
+2024-12-01 14:02:48,559 p=7537 u=nw_automation n=ansible | Encryption successful
+2024-12-01 14:03:51,009 p=7573 u=nw_automation n=ansible | PLAY [Demo on Ansible Vault] **********************************************************************************************************************************
+2024-12-01 14:03:51,016 p=7573 u=nw_automation n=ansible | TASK [Run show command] ***************************************************************************************************************************************
+2024-12-01 14:03:51,597 p=7573 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 14:03:51,604 p=7583 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 14:03:53,103 p=7573 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 14:03:53,104 p=7573 u=nw_automation n=ansible | TASK [Display variable] ***************************************************************************************************************************************
+2024-12-01 14:03:53,177 p=7573 u=nw_automation n=ansible | ok: [CSR1] => {
+    "output": {
+        "changed": false,
+        "failed": false,
+        "stdout": [
+            "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      \nGigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      \nGigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      \nGigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+        ],
+        "stdout_lines": [
+            [
+                "Interface              IP-Address      OK? Method Status                Protocol",
+                "GigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      ",
+                "GigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+            ]
+        ]
+    }
+}
+2024-12-01 14:03:53,180 p=7573 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 14:03:53,180 p=7573 u=nw_automation n=ansible | CSR1                       : ok=2    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 14:03:53,280 p=7583 u=nw_automation n=ansible | shutdown complete
+2024-12-01 14:04:42,354 p=7591 u=nw_automation n=ansible | PLAY [Demo on Ansible Vault] **********************************************************************************************************************************
+2024-12-01 14:04:42,363 p=7591 u=nw_automation n=ansible | TASK [Run show command] ***************************************************************************************************************************************
+2024-12-01 14:04:43,116 p=7591 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 14:04:43,124 p=7601 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 14:04:44,642 p=7591 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 14:04:44,645 p=7591 u=nw_automation n=ansible | TASK [Display variable] ***************************************************************************************************************************************
+2024-12-01 14:04:44,729 p=7591 u=nw_automation n=ansible | ok: [CSR1] => {
+    "output": {
+        "changed": false,
+        "failed": false,
+        "stdout": [
+            "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      \nGigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      \nGigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      \nGigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+        ],
+        "stdout_lines": [
+            [
+                "Interface              IP-Address      OK? Method Status                Protocol",
+                "GigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      ",
+                "GigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+            ]
+        ]
+    }
+}
+2024-12-01 14:04:44,732 p=7591 u=nw_automation n=ansible | TASK [Configure username] *************************************************************************************************************************************
+2024-12-01 14:04:44,754 p=7591 u=nw_automation n=ansible | fatal: [CSR1]: FAILED! => {"msg": "Attempting to decrypt but no vault secrets found"}
+2024-12-01 14:04:44,756 p=7591 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 14:04:44,756 p=7591 u=nw_automation n=ansible | CSR1                       : ok=2    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2024-12-01 14:04:44,856 p=7601 u=nw_automation n=ansible | shutdown complete
+2024-12-01 14:04:58,604 p=7605 u=nw_automation n=ansible | PLAY [Demo on Ansible Vault] **********************************************************************************************************************************
+2024-12-01 14:04:58,613 p=7605 u=nw_automation n=ansible | TASK [Run show command] ***************************************************************************************************************************************
+2024-12-01 14:04:59,281 p=7605 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 14:04:59,291 p=7615 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 14:05:00,793 p=7605 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 14:05:00,795 p=7605 u=nw_automation n=ansible | TASK [Display variable] ***************************************************************************************************************************************
+2024-12-01 14:05:00,876 p=7605 u=nw_automation n=ansible | ok: [CSR1] => {
+    "output": {
+        "changed": false,
+        "failed": false,
+        "stdout": [
+            "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      \nGigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      \nGigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      \nGigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+        ],
+        "stdout_lines": [
+            [
+                "Interface              IP-Address      OK? Method Status                Protocol",
+                "GigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      ",
+                "GigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+            ]
+        ]
+    }
+}
+2024-12-01 14:05:00,878 p=7605 u=nw_automation n=ansible | TASK [Configure username] *************************************************************************************************************************************
+2024-12-01 14:05:00,981 p=7605 u=nw_automation n=ansible | ok: [CSR1] => {
+    "msg": [
+        "vault_user",
+        "vault_secret_1234"
+    ]
+}
+2024-12-01 14:05:00,984 p=7605 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 14:05:00,984 p=7605 u=nw_automation n=ansible | CSR1                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 14:05:01,087 p=7615 u=nw_automation n=ansible | shutdown complete
+2024-12-01 14:07:13,107 p=7667 u=nw_automation n=ansible | PLAY [Demo on Ansible Vault] **********************************************************************************************************************************
+2024-12-01 14:07:13,115 p=7667 u=nw_automation n=ansible | TASK [Run show command] ***************************************************************************************************************************************
+2024-12-01 14:07:13,803 p=7667 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 14:07:13,813 p=7677 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 14:07:15,342 p=7667 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 14:07:15,344 p=7667 u=nw_automation n=ansible | TASK [Display variable] ***************************************************************************************************************************************
+2024-12-01 14:07:15,421 p=7667 u=nw_automation n=ansible | ok: [CSR1] => {
+    "output": {
+        "changed": false,
+        "failed": false,
+        "stdout": [
+            "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      \nGigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      \nGigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      \nGigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+        ],
+        "stdout_lines": [
+            [
+                "Interface              IP-Address      OK? Method Status                Protocol",
+                "GigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      ",
+                "GigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+            ]
+        ]
+    }
+}
+2024-12-01 14:07:15,424 p=7667 u=nw_automation n=ansible | TASK [Configure username] *************************************************************************************************************************************
+2024-12-01 14:07:15,517 p=7667 u=nw_automation n=ansible | ok: [CSR1] => {
+    "msg": [
+        "vault_user_new",
+        "vault_secret_4567"
+    ]
+}
+2024-12-01 14:07:15,519 p=7667 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 14:07:15,519 p=7667 u=nw_automation n=ansible | CSR1                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 14:07:15,621 p=7677 u=nw_automation n=ansible | shutdown complete
+2024-12-01 14:08:00,740 p=7705 u=nw_automation n=ansible | Encryption successful
+2024-12-01 14:08:52,541 p=7730 u=nw_automation n=ansible | Decryption successful
+2024-12-01 14:09:09,843 p=7736 u=nw_automation n=ansible | Encryption successful
+2024-12-01 14:09:29,144 p=7755 u=nw_automation n=ansible | ERROR! Attempting to decrypt but no vault secrets found
+2024-12-01 14:09:42,878 p=7758 u=nw_automation n=ansible | PLAY [Demo on Ansible Vault] **********************************************************************************************************************************
+2024-12-01 14:09:42,886 p=7758 u=nw_automation n=ansible | TASK [Run show command] ***************************************************************************************************************************************
+2024-12-01 14:09:43,593 p=7758 u=nw_automation n=ansible | network_os is set to cisco.ios.ios
+2024-12-01 14:09:43,602 p=7768 u=nw_automation n=ansible | [DEPRECATION WARNING]: The connection's stdin object is deprecated. Call 
+display.prompt_until(msg) instead. This feature will be removed in version 
+2.19. Deprecation warnings can be disabled by setting 
+deprecation_warnings=False in ansible.cfg.
+2024-12-01 14:09:45,113 p=7758 u=nw_automation n=ansible | ok: [CSR1]
+2024-12-01 14:09:45,116 p=7758 u=nw_automation n=ansible | TASK [Display variable] ***************************************************************************************************************************************
+2024-12-01 14:09:45,190 p=7758 u=nw_automation n=ansible | ok: [CSR1] => {
+    "output": {
+        "changed": false,
+        "failed": false,
+        "stdout": [
+            "Interface              IP-Address      OK? Method Status                Protocol\nGigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      \nGigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      \nGigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      \nGigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+        ],
+        "stdout_lines": [
+            [
+                "Interface              IP-Address      OK? Method Status                Protocol",
+                "GigabitEthernet1       192.168.29.201  YES NVRAM  up                    up      ",
+                "GigabitEthernet2       20.20.20.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet3       10.10.10.1      YES NVRAM  up                    up      ",
+                "GigabitEthernet4       10.10.20.1      YES NVRAM  administratively down down"
+            ]
+        ]
+    }
+}
+2024-12-01 14:09:45,192 p=7758 u=nw_automation n=ansible | TASK [Configure username] *************************************************************************************************************************************
+2024-12-01 14:09:45,266 p=7758 u=nw_automation n=ansible | ok: [CSR1] => {
+    "msg": [
+        "vault_user_new",
+        "vault_secret_4567"
+    ]
+}
+2024-12-01 14:09:45,268 p=7758 u=nw_automation n=ansible | PLAY RECAP ****************************************************************************************************************************************************
+2024-12-01 14:09:45,268 p=7758 u=nw_automation n=ansible | CSR1                       : ok=3    changed=0    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-12-01 14:09:45,370 p=7768 u=nw_automation n=ansible | shutdown complete

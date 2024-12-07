@@ -1,0 +1,12 @@
+---
+# handlers file for demo_role
+- name: Allow vlan on trunk port
+  cisco.ios.ios_config:
+    lines:
+      - switchport trunk allowed vlan add {{ new_vlan }}
+    parents:
+      - interface GigabitEthernet1/1
+
+- name: Save the configuration
+  cisco.ios.ios_config:
+    save_when: always

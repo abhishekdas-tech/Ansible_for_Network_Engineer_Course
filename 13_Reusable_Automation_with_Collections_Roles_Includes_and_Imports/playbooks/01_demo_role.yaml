@@ -1,0 +1,9 @@
+---
+- name: Demo on Roles
+  hosts: VIOS1
+  gather_facts: false
+  # vars:
+  #   new_vlan: 255
+  roles:
+    - role: demo_role
+      # new_vlan: 150

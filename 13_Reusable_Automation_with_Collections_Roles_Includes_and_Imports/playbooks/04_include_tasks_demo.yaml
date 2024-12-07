@@ -1,0 +1,26 @@
+---
+- name: Demo on Include tasks
+  hosts: CSR1, CSR2
+  gather_facts: false
+  tasks:
+    - name: Include precheck tasks
+      ansible.builtin.include_tasks: "{{ inventory_hostname }}_pre_checks_tasks.yaml"
+      vars:
+        precheck_cmds:
+          - 'show ip interface brief'
+          - 'show interfaces'
+          - 'show version'
+          - 'show interface description'
+
+    - name: Configure description
+      cisco.ios.ios_config:
+        lines:
+          - description Configured using Include Playbook again
+        parents:
+          - interface GigabitEthernet4
+
+    - name: Include Postcheck tasks
+      ansible.builtin.include_tasks: post_checks_tasks.yaml
+        
+
+        

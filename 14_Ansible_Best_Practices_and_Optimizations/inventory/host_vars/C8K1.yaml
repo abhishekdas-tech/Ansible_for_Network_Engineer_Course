@@ -1,0 +1,15 @@
+ansible_host: 192.168.29.200
+interface_details:
+  - name: GigabitEthernet2
+    description: Connected to CSR1
+    ip_address: 20.20.20.2
+    mask: 255.255.255.0
+  - name: GigabitEthernet3
+    description: Connected to CSR2
+    ip_address: 30.30.30.2
+    mask: 255.255.255.0
+  - name: GigabitEthernet4
+    description: Connected to WAN
+    ip_address: 40.40.40.2
+    mask: 255.255.255.0
+delay: 5

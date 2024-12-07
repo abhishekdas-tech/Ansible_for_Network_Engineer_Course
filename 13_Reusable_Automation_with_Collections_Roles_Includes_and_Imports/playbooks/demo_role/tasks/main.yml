@@ -1,0 +1,12 @@
+---
+# tasks file for demo_role
+- name: Configure VLANS
+  cisco.ios.ios_vlans:
+    config:
+      - name: "VLAN0{{ new_vlan }}"
+        vlan_id: "{{ new_vlan }}"
+        state: active
+        shutdown: disabled
+  notify:
+    - Allow vlan on trunk port
+    - Save the configuration
